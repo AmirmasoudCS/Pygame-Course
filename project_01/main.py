@@ -1,6 +1,7 @@
 import pygame
 import time
 import random
+pygame.font.init()
 
 WIDTH, HEIGHT = 1000, 800
 
@@ -14,8 +15,13 @@ PLAYER_HEGIHT = 60
 
 PLAYER_VEL = 5
 
-def draw(player):
+FONT = pygame.font.SysFont("cosmicsans", 30)
+
+def draw(player, elapsed_time):
+
     WIN.blit(BG, (0, 0))
+
+    time_text = FONT.render(f"Time: {round(elapsed_time)}s", 1, "white")
 
     pygame.draw.rect(WIN, "purple", player)
 
@@ -50,7 +56,7 @@ def main():
         if (keys[pygame.K_RIGHT] or keys[pygame.K_d]) and player.x + PLAYER_VEL + player.width <= WIDTH:
             player.x += PLAYER_VEL
         
-        draw(player)
+        draw(player, elapsed_time)
 
     pygame.quit()
 
