@@ -9,6 +9,10 @@ pygame.display.set_caption("Space Game")
 
 BG = pygame.image.load("space.png")
 
+def draw():
+    WIN.blit(BG, (0, 0))
+    pygame.display.update()
+
 def main():
     run = True
 
