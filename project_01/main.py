@@ -16,6 +16,8 @@ PLAYER_HEGIHT = 60
 STAR_WIDTH = 10
 STAR_HEIGHT = 20
 
+STAR_VEL = 3
+
 PLAYER_VEL = 5
 
 FONT = pygame.font.SysFont("cosmicsans", 30)
@@ -47,6 +49,8 @@ def main():
 
     stars = []
 
+    hit = False
+
     while run:
 
         star_count += clock.tick(60)
@@ -75,6 +79,17 @@ def main():
 
         if (keys[pygame.K_RIGHT] or keys[pygame.K_d]) and player.x + PLAYER_VEL + player.width <= WIDTH:
             player.x += PLAYER_VEL
+
+        for star in stars[:]:
+
+            star.y += STAR_VEL
+
+            if star.y > HEIGHT:
+                stars.remove(star)
+            elif star.y + star.height >= player.y and star.colliderect(player):
+                stars.remove(star)
+                hit = True
+                break
         
         draw(player, elapsed_time)
 
