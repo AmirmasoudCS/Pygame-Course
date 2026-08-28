@@ -23,6 +23,8 @@ def draw(player, elapsed_time):
 
     time_text = FONT.render(f"Time: {round(elapsed_time)}s", 1, "white")
 
+    WIN.blit(time_text, (10,10))
+
     pygame.draw.rect(WIN, "purple", player)
 
     pygame.display.update()
