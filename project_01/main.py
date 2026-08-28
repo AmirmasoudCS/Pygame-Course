@@ -22,7 +22,7 @@ PLAYER_VEL = 5
 
 FONT = pygame.font.SysFont("cosmicsans", 30)
 
-def draw(player, elapsed_time):
+def draw(player, elapsed_time, stars):
 
     WIN.blit(BG, (0, 0))
 
@@ -31,6 +31,9 @@ def draw(player, elapsed_time):
     WIN.blit(time_text, (10,10))
 
     pygame.draw.rect(WIN, "purple", player)
+
+    for star in stars:
+        pygame.draw.rect(WIN, "red", star)
 
     pygame.display.update()
 
@@ -91,7 +94,7 @@ def main():
                 hit = True
                 break
         
-        draw(player, elapsed_time)
+        draw(player, elapsed_time, stars)
 
     pygame.quit()
 
