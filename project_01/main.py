@@ -7,7 +7,7 @@ WIDTH, HEIGHT = 1000, 800
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Space Game")
 
-BG = pygame.image.load("./project_01/space.png")
+BG = pygame.transform.scale(pygame.image.load("./project_01/space.png"), (WIDTH, HEIGHT))
 
 def draw():
     WIN.blit(BG, (0, 0))
