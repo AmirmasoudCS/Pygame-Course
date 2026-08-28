@@ -12,8 +12,11 @@ BG = pygame.transform.scale(pygame.image.load("./project_01/space.png"), (WIDTH,
 PLAYER_WIDTH = 40
 PLAYER_HEGIHT = 60
 
-def draw():
+def draw(player):
     WIN.blit(BG, (0, 0))
+
+    pygame.draw.rect(WIN, "purple", player)
+
     pygame.display.update()
 
 def main():
@@ -26,7 +29,7 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
                 break
-        draw()
+        draw(player)
 
     pygame.quit()
 
