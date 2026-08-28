@@ -12,7 +12,7 @@ BG = pygame.transform.scale(pygame.image.load("./project_01/space.png"), (WIDTH,
 PLAYER_WIDTH = 40
 PLAYER_HEGIHT = 60
 
-PLAYER_VEL = 5
+PLAYER_VEL = 3.5
 
 def draw(player):
     WIN.blit(BG, (0, 0))
