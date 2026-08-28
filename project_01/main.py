@@ -59,7 +59,9 @@ def main():
                 star_x = random.randint(0, WIDTH - STAR_WIDTH)
                 star = pygame.rect(star_x, -STAR_HEIGHT, STAR_WIDTH, STAR_HEIGHT)
                 stars.append(star)
-                
+
+            star_add_increment = max(200, star_add_increment - 50)
+            star_count = 0
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
