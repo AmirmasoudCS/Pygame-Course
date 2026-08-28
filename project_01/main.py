@@ -70,7 +70,7 @@ def main():
 
     hit = False
 
-    while run:
+    while run and not hit:
 
         star_count += clock.tick(60)
 
