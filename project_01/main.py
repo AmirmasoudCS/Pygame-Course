@@ -39,10 +39,10 @@ def main():
 
         keys = pygame.key.get_pressed()
 
-        if keys[pygame.K_LEFT] or keys[pygame.K_a] and player.x - PLAYER_VEL >= 0:
+        if (keys[pygame.K_LEFT] or keys[pygame.K_a]) and player.x - PLAYER_VEL >= 0:
             player.x -= PLAYER_VEL
 
-        if keys[pygame.K_RIGHT] or keys[pygame.K_d] and player.x + PLAYER_VEL + player.width <= WIDTH:
+        if (keys[pygame.K_RIGHT] or keys[pygame.K_d]) and player.x + PLAYER_VEL + player.width <= WIDTH:
             player.x += PLAYER_VEL
         
         draw(player)
