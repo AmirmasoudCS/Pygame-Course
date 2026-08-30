@@ -199,15 +199,45 @@ class Ship:
 
     def draw(self, window):
 
-        # Draw the ship
+        # Draw ship
         window.blit(
             self.ship_img,
             (self.x, self.y)
         )
 
-        # Draw all lasers belonging to the ship
+        # Draw lasers
         for laser in self.lasers:
             laser.draw(window)
+
+        # Health bar
+        health_bar_width = self.ship_img.get_width()
+        health_bar_height = 5
+
+        health_percentage = self.health / 100
+
+        # Background of health bar
+        pygame.draw.rect(
+            window,
+            RED,
+            (
+                self.x,
+                self.y + self.ship_img.get_height() + 5,
+                health_bar_width,
+                health_bar_height
+            )
+        )
+
+        # Current health
+        pygame.draw.rect(
+            window,
+            (0, 255, 0),
+            (
+                self.x,
+                self.y + self.ship_img.get_height() + 5,
+                health_bar_width * health_percentage,
+                health_bar_height
+            )
+        )
 
     def shoot(self):
 
