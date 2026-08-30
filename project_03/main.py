@@ -288,6 +288,8 @@ class Enemy(Ship):
 
 def main():
 
+    spawn_timer = 0
+
     run = True
 
     level = 1
@@ -373,6 +375,22 @@ def main():
     # =========================
 
     while run:
+
+        spawn_timer -= 1
+
+        if spawn_timer <= 0:
+
+            x = random.randint(0, WIDTH - 50)
+
+            enemy = Enemy(
+                x,
+                -50
+            )
+
+            enemies.append(enemy)
+
+            # Spawn another enemy in 1-3 seconds
+            spawn_timer = random.randint(60, 180)
 
         clock.tick(FPS)
 
