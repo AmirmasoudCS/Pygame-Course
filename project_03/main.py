@@ -44,6 +44,10 @@ def main():
     run = True    
     clock = pygame.time.Clock()
 
+    def redraw_window():
+        WIN.blit(BACKGROUND, (0, 0))
+        pygame.display.update()
+
     while run:
         clock.tick(FPS)
         for event in pygame.event.get():
