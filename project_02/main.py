@@ -23,10 +23,10 @@ RED_SPACESHIP = pygame.transform.rotate(pygame.transform.scale(RED_SPACESHIP, (S
 RED_SPACESHIP_X = WIDTH-WIDTH/4
 RED_SPACESHIP_Y = HEIGHT/2
 
-def draw():
+def draw(yellow, red):
     WIN.fill(WHITE)
-    WIN.blit(YELLOW_SPACESHIP, (YELLOW_SPACESHIP_X, YELLOW_SPACESHIP_Y))
-    WIN.blit(RED_SPACESHIP, (RED_SPACESHIP_X, RED_SPACESHIP_Y))
+    WIN.blit(YELLOW_SPACESHIP, (yellow.x, yellow.y))
+    WIN.blit(RED_SPACESHIP, (red.x, red.y))
     pygame.display.update()
 
 def main():
@@ -44,7 +44,7 @@ def main():
                 run = False
 
         
-        draw()
+        draw(yellow, red)
 
     pygame.quit()
 
