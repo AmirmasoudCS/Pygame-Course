@@ -83,6 +83,7 @@ def handle_bullets(yellow_bullets, red_bullets, yellow, red):
         bullet.x += BULLET_VEL
 
         if red.colliderect(bullet):
+            DESTROY_SOUND.play()
             pygame.event.post(pygame.event.Event(RED_HIT))
             yellow_bullets.remove(bullet)
 
@@ -95,6 +96,7 @@ def handle_bullets(yellow_bullets, red_bullets, yellow, red):
         bullet.x -= BULLET_VEL
 
         if yellow.colliderect(bullet):
+            DESTROY_SOUND.play()
             pygame.event.post(pygame.event.Event(YELLOW_HIT))
             red_bullets.remove(bullet)
 
@@ -155,8 +157,6 @@ def draw(
 
 
 def draw_winner(text):
-
-    DESTROY_SOUND.play()
 
     winner_text = WINNER_FONT.render(
         text,
