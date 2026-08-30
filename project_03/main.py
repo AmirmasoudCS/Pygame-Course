@@ -53,7 +53,7 @@ def main():
     lives = 5
     clock = pygame.time.Clock()
 
-    def redraw_window(level, lives):
+    def redraw_window(*, level, lives):
 
         # Draw BG
         WIN.blit(BACKGROUND, (0, 0))
@@ -66,7 +66,7 @@ def main():
 
     while run:
         clock.tick(FPS)
-        redraw_window()
+        redraw_window(level=level, lives=lives)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
