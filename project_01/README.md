@@ -1,6 +1,6 @@
 # Dodge The Meteor
 
-<div>
+<div align="center">
     <img src="demo.png">
     <p><em>A screenshot of the game.</em></p>
 </div>
