@@ -247,14 +247,18 @@ class Enemy(Ship):
 
         self.laser_type = EnemyLaser
 
-        self.y_vel = 2
+        # Enemy movement speed
+        self.y_vel = random.randint(1, 3)
+
+        # Random time before the first shot
+        self.shoot_timer = random.randint(60, 180)
 
     def move(self):
         self.y += self.y_vel
 
     def shoot(self):
 
-        if self.cool_down_counter == 0:
+        if self.shoot_timer <= 0:
 
             laser = self.laser_type(
                 self.x + self.ship_width / 2,
@@ -263,7 +267,19 @@ class Enemy(Ship):
 
             self.lasers.append(laser)
 
-            self.cool_down_counter = 30
+            # Pick a new random shooting time
+            self.shoot_timer = random.randint(60, 180)
+
+    def update(self):
+
+        self.move()
+
+        self.shoot_timer -= 1
+
+        self.shoot()
+
+        self.cooldown()
+        self.move_lasers()
 
 
 # =========================
