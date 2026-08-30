@@ -9,7 +9,7 @@ pygame.font.init()
 WHITE = (255, 255, 255)
 
 # Fonts
-MAIN_FONT = pygame.font.SysFont("comicsans", 50)
+MAIN_FONT = pygame.font.SysFont("comicsans", 30)
 
 
 # Window
@@ -59,11 +59,16 @@ def main():
     def redraw_window(*, level, lives):
 
         # Draw BG
+        
         WIN.blit(BACKGROUND, (0, 0))
 
         # Draw Text
+        
         level_labels = MAIN_FONT.render(f"Level: {level}", 1, WHITE)
         lives_label = MAIN_FONT.render(f"Lives: {lives}", 1, WHITE)
+
+        WIN.blit(level_labels, (WIDTH - level_labels.get_width() - 10, 0))
+        WIN.blit(lives_label, (10, 0))
 
         pygame.display.update()
 
