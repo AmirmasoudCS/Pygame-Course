@@ -66,7 +66,7 @@ class Ship:
 
     def draw(self, window):
         pygame.draw.rect(window, RED, (self.x, self.y, self.ship_width, self.ship_height))
-        
+
 
 
 # Main Loop
@@ -77,6 +77,8 @@ def main():
     level = 1
     lives = 5
     clock = pygame.time.Clock()
+
+    ship = Ship(WIDTH/2, HEIGHT + 50)
 
     def redraw_window(*, level, lives):
 
