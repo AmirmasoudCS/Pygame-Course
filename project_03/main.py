@@ -10,6 +10,7 @@ pygame.font.init()
 
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
+BLACK = (255, 255, 255)
 
 
 # =========================
@@ -85,6 +86,9 @@ BACKGROUND = pygame.transform.scale(
 # Laser Base Class
 # =========================
 
+def lose():
+    lose_label = MAIN_FONT.render("LOST!", 1, RED, BLACK)
+    WIN.blit(lose_label, (0,0), (WIDTH,HEIGHT))
 class Laser:
 
     def __init__(self, x, y):
@@ -446,6 +450,10 @@ def main():
 
             # Remove enemy when it leaves the screen
             if enemy.y > HEIGHT:
+
+                lives -= 1
+                if lives == 0:
+                    lose()
 
                 enemies.remove(enemy)
 
