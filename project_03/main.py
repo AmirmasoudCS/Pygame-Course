@@ -136,6 +136,14 @@ class Laser:
     def off_screen(self):
         return self.y < 0 or self.y > HEIGHT
 
+    def get_rect(self):
+        return pygame.Rect(
+            self.x,
+            self.y,
+            self.image.get_width(),
+            self.image.get_height()
+        )
+
 
 # =========================
 # Player Laser Class
