@@ -440,11 +440,14 @@ def main():
         # Update Enemies
         # =========================
 
-        for enemy in enemies:
+        for enemy in enemies[:]:
 
-            enemy.move()
-            enemy.cooldown()
-            enemy.move_lasers()
+            enemy.update()
+
+            # Remove enemy when it leaves the screen
+            if enemy.y > HEIGHT:
+
+                enemies.remove(enemy)
 
         # =========================
         # Draw Everything
