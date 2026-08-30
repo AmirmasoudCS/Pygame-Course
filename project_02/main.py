@@ -114,7 +114,7 @@ def main():
 
         handle_bullets(yellow_bullets, red_bullets, yellow, red)
         
-        draw(yellow, red)
+        draw(yellow, red, yellow_bullets, red_bullets)
 
     pygame.quit()
 
