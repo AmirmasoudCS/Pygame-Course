@@ -330,6 +330,9 @@ class Enemy(Ship):
         self.move_lasers()
 
 
+def collide(obj1, obj2):
+    return obj1.get_rect().colliderect(obj2.get_rect())
+
 # =========================
 # Main Game
 # =========================
