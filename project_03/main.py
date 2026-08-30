@@ -157,10 +157,10 @@ class PlayerLaser(Laser):
 
 class EnemyLaser(Laser):
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, image):
         super().__init__(x, y)
 
-        self.image = RED_BULLET
+        self.image = image
         self.y_vel = 5
         self.damage = 10
 
@@ -293,14 +293,14 @@ class Enemy(Ship):
 
         if self.shoot_timer <= 0:
 
-            laser = self.laser_type(
+            laser = EnemyLaser(
                 self.x + self.ship_width / 2,
-                self.y + self.ship_height
+                self.y + self.ship_height,
+                self.laser_img
             )
 
             self.lasers.append(laser)
 
-            # Pick a new random shooting time
             self.shoot_timer = random.randint(60, 180)
 
     def update(self):
