@@ -62,8 +62,8 @@ def main():
         WIN.blit(BACKGROUND, (0, 0))
 
         # Draw Text
-        level_labels = MAIN_FONT.render(f"Level: {level}", color=WHITE)
-        lives_label = MAIN_FONT.render(f"Lives: {lives}", color=WHITE)
+        level_labels = MAIN_FONT.render(f"Level: {level}", 1, WHITE)
+        lives_label = MAIN_FONT.render(f"Lives: {lives}", 1, WHITE)
 
         pygame.display.update()
 
