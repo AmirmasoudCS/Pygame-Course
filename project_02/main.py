@@ -1,6 +1,10 @@
 import pygame
 
 pygame.init()
+pygame.mixer.init()
+DESTROY_SOUND = pygame.mixer.Sound("./project_02/assets/Grenade+1.mp3")
+BULLET_SOUND = pygame.mixer.Sound("./project_02/assets/Gun+Silencer.mp3")
+
 
 WIDTH, HEIGHT = 900, 500
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -152,6 +156,8 @@ def draw(
 
 def draw_winner(text):
 
+    DESTROY_SOUND.play()
+
     winner_text = WINNER_FONT.render(
         text,
         True,
@@ -213,6 +219,9 @@ def main():
                     event.key == pygame.K_LALT
                     and len(yellow_bullets) < MAX_BULLETS
                 ):
+                    
+                    BULLET_SOUND.play()
+                    
                     bullet = pygame.Rect(
                         yellow.x + SHIPS_WIDTH,
                         yellow.y + SHIPS_HEIGHT // 2,
@@ -227,6 +236,9 @@ def main():
                     event.key == pygame.K_RALT
                     and len(red_bullets) < MAX_BULLETS
                 ):
+
+                    BULLET_SOUND.play()
+                    
                     bullet = pygame.Rect(
                         red.x,
                         red.y + SHIPS_HEIGHT // 2,
