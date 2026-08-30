@@ -88,23 +88,36 @@ BACKGROUND = pygame.transform.scale(
 
 def lose():
 
-    lose_label = MAIN_FONT.render(
-        "LOST!",
-        1,
-        RED
-    )
+    run = True
 
-    WIN.blit(
-        lose_label,
-        (
-            WIDTH / 2 - lose_label.get_width() / 2,
-            HEIGHT / 2 - lose_label.get_height() / 2
+    while run:
+
+        WIN.fill(BLACK)
+
+        lose_label = MAIN_FONT.render(
+            "LOST!",
+            1,
+            RED
         )
-    )
 
-    pygame.display.update()
+        WIN.blit(
+            lose_label,
+            (
+                WIDTH / 2 - lose_label.get_width() / 2,
+                HEIGHT / 2 - lose_label.get_height() / 2
+            )
+        )
 
-    pygame.time.delay(3000)
+        pygame.display.update()
+
+        for event in pygame.event.get():
+
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                return
+
+            if event.type == pygame.KEYDOWN:
+                run = False
 class Laser:
 
     def __init__(self, x, y):
