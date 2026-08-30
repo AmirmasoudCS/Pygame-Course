@@ -256,7 +256,7 @@ class Player(Ship):
         self.ship_img = YELLOW_SPACE_SHIP
         self.laser_type = PlayerLaser
 
-        self.x_vel = 5
+        self.x_vel = 9
 
     def move_left(self):
         self.x -= self.x_vel
