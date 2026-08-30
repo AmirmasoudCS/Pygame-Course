@@ -221,8 +221,8 @@ class Player(Ship):
         if self.cool_down_counter == 0:
 
             laser = self.laser_type(
-                self.x + self.ship_width / 2,
-                self.y
+                self.x,
+                self.y - self.ship_height,
             )
 
             self.lasers.append(laser)
