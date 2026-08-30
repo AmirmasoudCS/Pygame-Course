@@ -7,6 +7,8 @@ pygame.font.init()
 
 # Colors
 WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+
 
 # Fonts
 MAIN_FONT = pygame.font.SysFont("comicsans", 30)
@@ -45,6 +47,26 @@ YELLOW_BULLET = pygame.image.load("./project_03/assets/pixel_laser_yellow.png")
 
 BACKGROUND = pygame.image.load("./project_03/assets/background-black.png")
 BACKGROUND = pygame.transform.scale(BACKGROUND, (WIDTH, HEIGHT))
+
+
+# Abstract Ships Class
+
+class Ship:
+
+    def __init__(self, x, y, health=100):
+        self.x = x
+        self.y = y
+        self.health = health
+        self.ship_img = None
+        self.laser_img = None
+        self.lasers = []
+        self.cool_down_counter = 0
+        self.ship_width = 50
+        self.ship_height = 50
+
+    def draw(self, window):
+        pygame.draw.rect(window, RED, (self.x, self.y, self.ship_width, self.ship_height))
+        
 
 
 # Main Loop
