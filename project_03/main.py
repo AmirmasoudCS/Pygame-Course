@@ -304,14 +304,21 @@ def main():
     # Create enemies
     enemies = []
 
-    for i in range(5):
+    for _ in range(5):
 
-        enemy = Enemy(
-            100 + i * 120,
-            100
+        x = random.randint(
+            0,
+            WIDTH - 50
         )
 
-        enemies.append(enemy)
+        y = random.randint(
+            -500,
+            -50
+        )
+
+        enemies.append(
+            Enemy(x, y)
+        )
 
     # =========================
     # Draw Window
