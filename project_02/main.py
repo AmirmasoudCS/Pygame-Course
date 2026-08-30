@@ -12,6 +12,7 @@ BLACK = (0, 0, 0)
 
 BORDER = pygame.Rect(WIDTH/2 - 5, 0, 10, HEIGHT)
 
+BULLET_VEL = 7
 
 SHIPS_WIDTH = 55
 SHIPS_HEIGT = 40
@@ -38,6 +39,9 @@ def draw(yellow, red):
 
 def main():
 
+    yellow_bullets = []
+    red_bullets = []
+
     yellow = pygame.Rect(YELLOW_SPACESHIP_X, YELLOW_SPACESHIP_Y, SHIPS_WIDTH, SHIPS_HEIGT)
     red = pygame.Rect(RED_SPACESHIP_X, RED_SPACESHIP_Y, SHIPS_WIDTH, SHIPS_HEIGT)
 
@@ -49,6 +53,16 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LALT:
+                    bullet = pygame.Rect(yellow.x+SHIPS_WIDTH, yellow.y + SHIPS_HEIGT/2, 10, 5)
+                    yellow_bullets.append(bullet)
+
+                if event.key == pygame.K_RALT:
+                    bullet = pygame.Rect(red.x, red.y + SHIPS_HEIGT/2, 10, 5)
+                    red_bullets.append(bullet)
+
 
         keys_pressed = pygame.key.get_pressed()
 
