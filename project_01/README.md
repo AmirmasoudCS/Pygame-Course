@@ -1,4 +1,4 @@
-# Space Game
+# Dodge The Meteor
 
 <div>
     <img src="demo.png">
