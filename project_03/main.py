@@ -27,7 +27,7 @@ MAIN_FONT = pygame.font.SysFont("comicsans", 30)
 FPS = 60
 
 WIDTH = 750
-HEIGHT = 750
+HEIGHT = 1000
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Space Shooter")
