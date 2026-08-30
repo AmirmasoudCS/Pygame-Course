@@ -119,9 +119,9 @@ def main():
                 run = False
         keys = pygame.key.get_pressed()
 
-        if keys[pygame.K_a] or keys[pygame.K_LEFT] and ship.x - ship.x_vel >= 0:     # Left
+        if (keys[pygame.K_a] or keys[pygame.K_LEFT]) and ship.x - ship.x_vel >= 0:     # Left
             ship.move_left()
-        if keys[pygame.K_d] or keys[pygame.K_RIGHT] and ship.x + ship.x_vel <= WIDTH - ship.ship_width:    # Right
+        if (keys[pygame.K_d] or keys[pygame.K_RIGHT]) and ship.x + ship.x_vel <= WIDTH - ship.ship_width:    # Right
             ship.move_right()
 
 
