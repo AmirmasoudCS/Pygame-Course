@@ -54,7 +54,7 @@ def main():
 
         if keys_pressed[pygame.K_a] and yellow.x - SHIPS_X_VEL >= 0: # yellow left
             yellow.x -= SHIPS_X_VEL
-        if keys_pressed[pygame.K_d] and yellow.x + SHIPS_X_VEL <= (WIDTH / 2) - SHIPS_WIDTH: # yellow right
+        if keys_pressed[pygame.K_d] and yellow.x + SHIPS_X_VEL <= (WIDTH / 2) - SHIPS_WIDTH + 15: # yellow right
             yellow.x += SHIPS_X_VEL
         if keys_pressed[pygame.K_w] and yellow.y - SHIPS_Y_VEL >= 0: # yellow up
             yellow.y -= SHIPS_Y_VEL
