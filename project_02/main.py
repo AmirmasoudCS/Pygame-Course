@@ -14,6 +14,8 @@ RED_SPACESHIP = pygame.image.load("./assets/spaceship_red.png")
 
 def draw():
     WIN.fill(WHITE)
+    WIN.blit(YELLOW_SPACESHIP, (WIDTH/4, HEIGHT/2))
+    WIN.blit(RED_SPACESHIP, (WIDTH-WIDTH/4, HEIGHT/2))
     pygame.display.update()
 
 def main():
