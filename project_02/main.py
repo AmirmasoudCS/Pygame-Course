@@ -9,6 +9,8 @@ FPS = 60
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+RED = (255, 0, 0)
+YELLOW = (255, 255, 0)
 
 BORDER = pygame.Rect(WIDTH//2 - 5, 0, 10, HEIGHT)
 
@@ -52,11 +54,15 @@ def handle_bullets(yellow_bullets, red_bullets, yellow, red):
         if bullet.x < 0:
             red_bullets.remove(bullet)
 
-def draw(yellow, red):
+def draw(yellow, red, yellow_bullets, red_bullets):
     WIN.fill(WHITE)
     pygame.draw.rect(WIN, BLACK, BORDER)
     WIN.blit(YELLOW_SPACESHIP, (yellow.x, yellow.y))
     WIN.blit(RED_SPACESHIP, (red.x, red.y))
+    for bullet in yellow_bullets:
+        pygame.draw.rect(WIN, YELLOW, bullet)
+    for bullet in red_bullets:
+        pygame.draw.rect(WIN, RED, bullet)
     pygame.display.update()
 
 def main():
