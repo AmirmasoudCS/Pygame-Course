@@ -179,7 +179,7 @@ class EnemyLaser(Laser):
 
 class Ship:
 
-    def __init__(self, x, y, health=100):
+    def __init__(self, x, y, health=30):
         self.x = x
         self.y = y
         self.health = health
@@ -213,7 +213,7 @@ class Ship:
         health_bar_width = self.ship_img.get_width()
         health_bar_height = 5
 
-        health_percentage = self.health / 100
+        health_percentage = self.health / 30 if self.laser_type == YELLOW_BULLET else self.health / 20
 
         # Background of health bar
         pygame.draw.rect(
