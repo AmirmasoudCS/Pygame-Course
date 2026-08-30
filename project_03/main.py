@@ -49,7 +49,7 @@ BACKGROUND = pygame.image.load("./project_03/assets/background-black.png")
 BACKGROUND = pygame.transform.scale(BACKGROUND, (WIDTH, HEIGHT))
 
 
-# Abstract Ships Class
+# Abstract Classes
 
 class Ship:
 
@@ -58,14 +58,23 @@ class Ship:
         self.y = y
         self.health = health
         self.ship_img = None
-        self.laser_img = None
-        self.lasers = []
+        self.lasers = list(Lasers)
         self.cool_down_counter = 0
         self.ship_width = 50
         self.ship_height = 50
 
     def draw(self, window):
         pygame.draw.rect(window, RED, (self.x, self.y, self.ship_width, self.ship_height))
+
+class Lasers:
+
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.image = None
+        self.y_vel = None
+        self.width = 2
+        self.height = 5
 
 ## Player Ship Class
 
@@ -82,6 +91,7 @@ class Player(Ship):
 
     def move_right(self):
         self.x += self.x_vel
+        
 # Main Loop
 
 def main():
