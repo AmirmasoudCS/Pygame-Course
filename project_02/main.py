@@ -1,4 +1,5 @@
 import pygame
+import os
 
 WIDTH, HEIGHT = 900, 500
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -7,6 +8,9 @@ pygame.display.set_caption("Space Battle Ship")
 FPS = 60
 
 WHITE = (255, 255, 255)
+
+YELLOW_SPACESHIP = pygame.image.load("./assets/spaceship_yellow.png")
+RED_SPACESHIP = pygame.image.load("./assets/spaceship_red.png")
 
 def draw():
     WIN.fill(WHITE)
