@@ -13,6 +13,7 @@ BLACK = (0, 0, 0)
 BORDER = pygame.Rect(WIDTH/2 - 5, 0, 10, HEIGHT)
 
 BULLET_VEL = 7
+MAX_BULLETS = 3
 
 SHIPS_WIDTH = 55
 SHIPS_HEIGT = 40
@@ -55,11 +56,11 @@ def main():
                 run = False
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LALT:
+                if event.key == pygame.K_LALT and len(yellow_bullets) < MAX_BULLETS:
                     bullet = pygame.Rect(yellow.x+SHIPS_WIDTH, yellow.y + SHIPS_HEIGT/2, 10, 5)
                     yellow_bullets.append(bullet)
 
-                if event.key == pygame.K_RALT:
+                if event.key == pygame.K_RALT and len(red_bullets) < MAX_BULLETS:
                     bullet = pygame.Rect(red.x, red.y + SHIPS_HEIGT/2, 10, 5)
                     red_bullets.append(bullet)
 
