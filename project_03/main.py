@@ -78,7 +78,7 @@ def main():
     lives = 5
     clock = pygame.time.Clock()
 
-    ship = Ship(WIDTH/2, HEIGHT + 50)
+    ship = Ship(WIDTH/2, HEIGHT - 55)
 
     def redraw_window(*, level, lives):
 
@@ -93,6 +93,8 @@ def main():
 
         WIN.blit(level_labels, (WIDTH - level_labels.get_width() - 10, 0))
         WIN.blit(lives_label, (10, 0))
+
+        ship.draw(WIN)
 
         pygame.display.update()
 
