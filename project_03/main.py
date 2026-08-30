@@ -87,8 +87,24 @@ BACKGROUND = pygame.transform.scale(
 # =========================
 
 def lose():
-    lose_label = MAIN_FONT.render("LOST!", 1, RED, BLACK)
-    WIN.blit(lose_label, (0,0), (WIDTH,HEIGHT))
+
+    lose_label = MAIN_FONT.render(
+        "LOST!",
+        1,
+        RED
+    )
+
+    WIN.blit(
+        lose_label,
+        (
+            WIDTH / 2 - lose_label.get_width() / 2,
+            HEIGHT / 2 - lose_label.get_height() / 2
+        )
+    )
+
+    pygame.display.update()
+
+    pygame.time.delay(3000)
 class Laser:
 
     def __init__(self, x, y):
