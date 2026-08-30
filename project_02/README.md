@@ -13,7 +13,7 @@ Two players control spaceships on opposite sides of the screen and fight by shoo
 
 * `W` / `A` / `S` / `D` - Move the yellow spaceship
 * `Left Alt` - Shoot as Yellow
-* `Arrow Keys` - Move the red spaceship
+* `↑` / `←` / `↓` / `→` - Move the red spaceship
 * `Right Alt` - Shoot as Red
 
 ## Purpose
