@@ -236,6 +236,13 @@ class Ship:
             if laser.off_screen():
                 self.lasers.remove(laser)
 
+    def get_rect(self):
+        return pygame.Rect(
+            self.x,
+            self.y,
+            self.ship_img.get_width(),
+            self.ship_img.get_height()
+        )
 
 # =========================
 # Player Ship Class
