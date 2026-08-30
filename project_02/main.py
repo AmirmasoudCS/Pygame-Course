@@ -14,6 +14,9 @@ YELLOW = (255, 255, 0)
 
 BORDER = pygame.Rect(WIDTH//2 - 5, 0, 10, HEIGHT)
 
+BG = pygame.image.load("./project_02/assets/space.png")
+WIN.blit(BG)
+
 BULLET_VEL = 7
 MAX_BULLETS = 3
 
