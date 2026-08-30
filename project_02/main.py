@@ -47,22 +47,22 @@ def main():
 
         keys_pressed = pygame.key.get_pressed()
 
-        if keys_pressed[pygame.K_a]: # yellow left
+        if keys_pressed[pygame.K_a] and yellow.x - SHIPS_X_VEL >= 0: # yellow left
             yellow.x -= SHIPS_X_VEL
-        if keys_pressed[pygame.K_d]: # yellow right
+        if keys_pressed[pygame.K_d] and yellow.x + SHIPS_X_VEL <= (WIDTH / 2) - SHIPS_WIDTH: # yellow right
             yellow.x += SHIPS_X_VEL
-        if keys_pressed[pygame.K_w]: # yellow up
+        if keys_pressed[pygame.K_w] and yellow.y - SHIPS_Y_VEL >= 0: # yellow up
             yellow.y -= SHIPS_Y_VEL
-        if keys_pressed[pygame.K_s]: # yellow down
+        if keys_pressed[pygame.K_s] and yellow.y + SHIPS_Y_VEL <= HEIGHT - (SHIPS_HEIGT + 10): # yellow down
             yellow.y += SHIPS_Y_VEL
 
-        if keys_pressed[pygame.K_LEFT]: # red left
+        if keys_pressed[pygame.K_LEFT] and red.x - SHIPS_X_VEL >= WIDTH / 2: # red left
             red.x -= SHIPS_X_VEL
-        if keys_pressed[pygame.K_RIGHT]: # red right
+        if keys_pressed[pygame.K_RIGHT] and red.x + SHIPS_X_VEL <= WIDTH - (SHIPS_WIDTH - 15)  : # red right
             red.x += SHIPS_X_VEL
-        if keys_pressed[pygame.K_UP]: # red up
+        if keys_pressed[pygame.K_UP] and red.y - SHIPS_Y_VEL >= 0: # red up
             red.y -= SHIPS_Y_VEL
-        if keys_pressed[pygame.K_DOWN]: # red down
+        if keys_pressed[pygame.K_DOWN] and red.y + SHIPS_Y_VEL <= HEIGHT - (SHIPS_HEIGT + 10): # red down
             red.y += SHIPS_Y_VEL
         
         draw(yellow, red)
