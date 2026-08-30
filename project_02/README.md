@@ -1,6 +1,6 @@
 # Space Battle Ship
 
-<div>
+<div align="center">
     <img src="assets/demo.png">
     <p><em>A screenshot of the game.</em></p>
 </div>
