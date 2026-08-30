@@ -25,3 +25,12 @@ YELLOW_BULLET = pygame.image.load("./project_03/assets/pixel_laser_yellow.png")
 ## Background
 
 BACKGROUND = pygame.image.load("./project_03/assets/background-black.png")
+
+
+# Window
+
+WIDTH = 750
+HEIGHT = 750
+
+WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Space Shooter")
