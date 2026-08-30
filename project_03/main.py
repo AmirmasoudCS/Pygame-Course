@@ -3,6 +3,8 @@ import os
 import time
 import time
 
+FPS = 60
+
 # Load images
 
 ## Enemy Ships
@@ -34,3 +36,16 @@ HEIGHT = 750
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Space Shooter")
+
+# Main Loop
+
+def main():
+
+    run = True    
+    clock = pygame.time.Clock()
+
+    while run:
+        clock.tick(FPS)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
