@@ -8,6 +8,10 @@ pygame.display.set_caption("Space Battle Ship")
 FPS = 60
 
 WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+
+BORDER = pygame.Rect(WIDTH/2 - 5, 0, 10, HEIGHT)
+
 
 SHIPS_WIDTH = 55
 SHIPS_HEIGT = 40
@@ -27,6 +31,7 @@ RED_SPACESHIP_Y = HEIGHT/2
 
 def draw(yellow, red):
     WIN.fill(WHITE)
+    pygame.draw.rect(WIN, BLACK, BORDER)
     WIN.blit(YELLOW_SPACESHIP, (yellow.x, yellow.y))
     WIN.blit(RED_SPACESHIP, (red.x, red.y))
     pygame.display.update()
