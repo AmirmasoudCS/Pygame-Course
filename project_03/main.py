@@ -5,6 +5,9 @@ import time
 pygame.font.init()
 
 
+# Colors
+WHITE = (255, 255, 255)
+
 # Fonts
 MAIN_FONT = pygame.font.SysFont("comicsans", 50)
 
@@ -59,8 +62,8 @@ def main():
         WIN.blit(BACKGROUND, (0, 0))
 
         # Draw Text
-        level_labels = MAIN_FONT.render(f"Level: {level}")
-        lives_label = MAIN_FONT.render(f"Lives: {lives}")
+        level_labels = MAIN_FONT.render(f"Level: {level}", color=WHITE)
+        lives_label = MAIN_FONT.render(f"Lives: {lives}", color=WHITE)
 
         pygame.display.update()
 
