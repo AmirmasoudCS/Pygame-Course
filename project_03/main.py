@@ -301,6 +301,8 @@ class Enemy(Ship):
         # Random time before the first shot
         self.shoot_timer = random.randint(60, 180)
 
+        self.health = 20
+
     def move(self):
         self.y += self.y_vel
 
