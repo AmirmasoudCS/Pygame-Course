@@ -13,10 +13,10 @@ SHIPS_WIDTH = 55
 SHIPS_HEIGT = 40
 
 YELLOW_SPACESHIP = pygame.image.load("./project_02/assets/spaceship_yellow.png")
-YELLOW_SPACESHIP = pygame.transform.scale(YELLOW_SPACESHIP, (SHIPS_WIDTH, SHIPS_HEIGT))
+YELLOW_SPACESHIP = pygame.transform.rotate(pygame.transform.scale(YELLOW_SPACESHIP, (SHIPS_WIDTH, SHIPS_HEIGT)), 90)
 
 RED_SPACESHIP = pygame.image.load("./project_02/assets/spaceship_red.png")
-RED_SPACESHIP = pygame.transform.scale(RED_SPACESHIP, (SHIPS_WIDTH, SHIPS_HEIGT))
+RED_SPACESHIP = pygame.transform.rotate(pygame.transform.scale(RED_SPACESHIP, (SHIPS_WIDTH, SHIPS_HEIGT)), 270)
 
 def draw():
     WIN.fill(WHITE)
