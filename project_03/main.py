@@ -67,8 +67,20 @@ class Ship:
     def draw(self, window):
         pygame.draw.rect(window, RED, (self.x, self.y, self.ship_width, self.ship_height))
 
+## Player Ship Class
 
+class Player(Ship):
 
+    def __init__(self):
+        self.ship_img = YELLOW_SPACE_SHIP
+        self.laser_img = YELLOW_BULLET
+        self.x_vel = 5
+
+    def move_left(self):
+        self.x -= self.x_vel
+
+    def move_right(self):
+        self.x += self.x_vel
 # Main Loop
 
 def main():
@@ -110,7 +122,7 @@ def main():
             pass
         if keys[pygame.K_d] or keys[pygame.K_RIGHT]:    # Right
             pass
-              
+
 
 # Running the main
 
