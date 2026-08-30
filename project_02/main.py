@@ -11,6 +11,8 @@ WHITE = (255, 255, 255)
 
 SHIPS_WIDTH = 55
 SHIPS_HEIGT = 40
+SHIPS_X_VEL = 5
+SHIPS_Y_VEL = 3
 
 YELLOW_SPACESHIP = pygame.image.load("./project_02/assets/spaceship_yellow.png")
 YELLOW_SPACESHIP = pygame.transform.rotate(pygame.transform.scale(YELLOW_SPACESHIP, (SHIPS_WIDTH, SHIPS_HEIGT)), 90)
@@ -43,6 +45,25 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
 
+        keys_pressed = pygame.key.get_pressed()
+
+        if keys_pressed[pygame.K_a]: # yellow left
+            yellow.x -= SHIPS_X_VEL
+        if keys_pressed[pygame.K_d]: # yellow right
+            yellow.x += SHIPS_X_VEL
+        if keys_pressed[pygame.K_w]: # yellow up
+            yellow.y -= SHIPS_Y_VEL
+        if keys_pressed[pygame.K_s]: # yellow down
+            yellow.y += SHIPS_Y_VEL
+
+        if keys_pressed[pygame.K_LEFT]: # red left
+            red.x -= SHIPS_X_VEL
+        if keys_pressed[pygame.K_RIGHT]: # red right
+            red.x += SHIPS_X_VEL
+        if keys_pressed[pygame.K_UP]: # red up
+            red.y -= SHIPS_Y_VEL
+        if keys_pressed[pygame.K_DOWN]: # red down
+            red.y += SHIPS_Y_VEL
         
         draw(yellow, red)
 
