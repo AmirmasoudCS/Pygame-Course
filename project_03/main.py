@@ -427,6 +427,10 @@ def main():
 
     while run:
 
+        # =========================
+        # Spawn Enemies
+        # =========================
+
         spawn_timer -= 1
 
         if spawn_timer <= 0:
@@ -445,7 +449,10 @@ def main():
 
         clock.tick(FPS)
 
+        # =========================
         # Events
+        # =========================
+
         for event in pygame.event.get():
 
             if event.type == pygame.QUIT:
@@ -457,7 +464,6 @@ def main():
 
         keys = pygame.key.get_pressed()
 
-        # Move left
         if (
             keys[pygame.K_a]
             or keys[pygame.K_LEFT]
@@ -465,7 +471,6 @@ def main():
 
             ship.move_left()
 
-        # Move right
         if (
             keys[pygame.K_d]
             or keys[pygame.K_RIGHT]
@@ -495,20 +500,92 @@ def main():
 
             enemy.update()
 
-            # Remove enemy when it leaves the screen
+            # Enemy reached the bottom
             if enemy.y > HEIGHT:
 
                 lives -= 1
-                if lives == 0:
-                    lose()
-
                 enemies.remove(enemy)
+
+                if lives <= 0:
+                    lose()
+                    run = False
+
+        # =========================
+        # Player Lasers -> Enemies
+        # =========================
+
+        for laser in ship.lasers[:]:
+
+            for enemy in enemies[:]:
+
+                if collide(laser, enemy):
+
+                    # Damage enemy
+                    enemy.health -= laser.damage
+
+                    # Remove the laser
+                    ship.lasers.remove(laser)
+
+                    # Destroy enemy if health reaches 0
+                    if enemy.health <= 0:
+                        enemies.remove(enemy)
+
+                    break
+
+        # =========================
+        # Enemy Lasers -> Player
+        # =========================
+
+        for enemy in enemies:
+
+            for laser in enemy.lasers[:]:
+
+                if collide(laser, ship):
+
+                    # Damage player
+                    ship.health -= laser.damage
+
+                    # Remove the laser
+                    enemy.lasers.remove(laser)
+
+                    break
+
+        # =========================
+        # Enemy Ships -> Player
+        # =========================
+
+        for enemy in enemies[:]:
+
+            if collide(enemy, ship):
+
+                # Damage player
+                ship.health -= 25
+
+                # Remove enemy after collision
+                enemies.remove(enemy)
+
+        # =========================
+        # Player Health
+        # =========================
+
+        if ship.health <= 0:
+
+            lives -= 1
+
+            if lives <= 0:
+                lose()
+                run = False
+
+            else:
+                # Reset player's health
+                ship.health = 100
 
         # =========================
         # Draw Everything
         # =========================
 
         redraw_window()
+
 
     pygame.quit()
 
