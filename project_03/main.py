@@ -104,7 +104,13 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+        keys = pygame.key.get_pressed()
 
+        if keys[pygame.K_a] or keys[pygame.K_LEFT]:     # Left
+            pass
+        if keys[pygame.K_d] or keys[pygame.K_RIGHT]:    # Right
+            pass
+              
 
 # Running the main
 
