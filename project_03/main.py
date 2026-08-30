@@ -71,7 +71,9 @@ class Ship:
 
 class Player(Ship):
 
-    def __init__(self):
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
         self.ship_img = YELLOW_SPACE_SHIP
         self.laser_img = YELLOW_BULLET
         self.x_vel = 5
