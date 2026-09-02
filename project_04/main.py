@@ -21,6 +21,12 @@ def main():
 
     clock = pygame.time.Clock()
 
+    WIN.blit(GRASS, (0, 0))
+    WIN.blit(TRACK, (0, 0))
+    WIN.blit(BORDER, (0, 0))
+
+    pygame.display.update()
+
     run = True
     while run:
 
