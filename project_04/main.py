@@ -67,7 +67,7 @@ def draw(window, images, player_car):
     for image, pos in images:
         window.blit(image, pos)
 
-    player_car.draw()
+    player_car.draw(window)
     pygame.display.update()
 
 player_car = PlayerCar(4, 4)
