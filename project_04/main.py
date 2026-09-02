@@ -9,8 +9,10 @@ FINISH = pygame.image.load("./project_04/assets/imgs/finish.png")
 RED_CAR = pygame.image.load("./project_04/assets/imgs/red-car.png")
 PURPLE_CAR = pygame.image.load("./project_04/assets/imgs/purple-car.png")
 
-WIDTH = TRACK.get_width()
-HEIGHT = TRACK.get_height()
+MARGIN = 15
+
+WIDTH = TRACK.get_width() + MARGIN
+HEIGHT = TRACK.get_height() + MARGIN
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Racing Game")
