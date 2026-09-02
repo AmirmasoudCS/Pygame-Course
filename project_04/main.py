@@ -13,3 +13,5 @@ WIDTH = TRACK.get_width()
 HEIGHT = TRACK.get_height()
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+WIN.set_caption("Racing Game")
+
