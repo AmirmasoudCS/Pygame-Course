@@ -35,6 +35,14 @@ FPS = 60
 
 images = [(GRASS,GRASS_RECT), (TRACK, TRACK_RECT), (BORDER, BORDER_RECT)]
 
+class AbstractCar:
+
+    def __init__(self, max_vel, rotation_vel):
+        self.max_vel = max_vel
+        self.vel = 0
+        self.rotation_vel = rotation_vel
+        self.angle = 0
+
 def draw(window, images):
 
     for image, pos in images:
