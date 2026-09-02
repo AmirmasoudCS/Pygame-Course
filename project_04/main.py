@@ -57,6 +57,15 @@ class AbstractCar:
     def draw(self, window):
         blit_rotate_center(window, self.img)
 
+class PlayerCar(AbstractCar):
+
+    IMG = PURPLE_CAR
+
+    def __init__(self, max_vel, rotation_vel):
+        super().__init__(max_vel, rotation_vel)
+        self.img = self.IMG
+
+
 def draw(window, images):
 
     for image, pos in images:
