@@ -1,6 +1,7 @@
 import pygame
 import time
 import math
+from utils import blit_rotate_center
 
 TRACK = pygame.image.load("./project_04/assets/imgs/track.png")
 BORDER = pygame.image.load("./project_04/assets/imgs/track-border.png")
@@ -37,7 +38,10 @@ images = [(GRASS,GRASS_RECT), (TRACK, TRACK_RECT), (BORDER, BORDER_RECT)]
 
 class AbstractCar:
 
+    IMG = RED_CAR
+
     def __init__(self, max_vel, rotation_vel):
+        self.img = self.IMG
         self.max_vel = max_vel
         self.vel = 0
         self.rotation_vel = rotation_vel
@@ -49,6 +53,9 @@ class AbstractCar:
             self.angle += self.rotation_vel
         elif right:
             self.angle -= self.rotation_vel
+
+    def draw(self, window):
+        blit_rotate_center(window, self.img)
 
 def draw(window, images):
 
