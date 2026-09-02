@@ -1,7 +1,7 @@
 import pygame
 import time
 import math
-from utils import blit_rotate_center
+from project_04.utils import blit_rotate_center
 
 TRACK = pygame.image.load("./project_04/assets/imgs/track.png")
 BORDER = pygame.image.load("./project_04/assets/imgs/track-border.png")
