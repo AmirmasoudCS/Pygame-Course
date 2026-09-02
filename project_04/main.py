@@ -62,16 +62,21 @@ class PlayerCar(AbstractCar):
     IMG = PURPLE_CAR
     
 
-def draw(window, images):
+def draw(window, images, player_car):
 
     for image, pos in images:
         window.blit(image, pos)
+
+    player_car.draw()
+    pygame.display.update()
+
+player_car = PlayerCar(4, 4)
 
 def main():
 
     clock = pygame.time.Clock()
 
-    draw(WIN, images)    
+    draw(WIN, images, player_car)
 
     pygame.display.update()
 
