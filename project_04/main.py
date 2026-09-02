@@ -103,6 +103,8 @@ def main():
         if keys[pygame.K_s]:
             pass
 
+        draw(WIN, images, player_car)
+
     pygame.quit()
 
 
