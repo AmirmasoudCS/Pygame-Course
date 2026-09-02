@@ -46,6 +46,7 @@ class AbstractCar:
         self.vel = 0
         self.rotation_vel = rotation_vel
         self.angle = 0
+        self.x, self.y = self.START_POS
 
     def rotate(self, left=False, right=False):
         
@@ -55,10 +56,11 @@ class AbstractCar:
             self.angle -= self.rotation_vel
 
     def draw(self, window):
-        blit_rotate_center(window, self.img)
+        blit_rotate_center(window, self.img, (self.x, self.y), self.angle)
 
 class PlayerCar(AbstractCar):
 
+    START_POS = (180, 200)
     IMG = PURPLE_CAR
     
 
