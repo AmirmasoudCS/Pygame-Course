@@ -8,6 +8,15 @@ FINISH = pygame.image.load("./project_04/assets/imgs/finish.png")
 RED_CAR = pygame.image.load("./project_04/assets/imgs/red-car.png")
 PURPLE_CAR = pygame.image.load("./project_04/assets/imgs/purple-car.png")
 
+CAR_WIDTH = RED_CAR.get_width()
+CAR_HEIGHT = RED_CAR.get_height()
+
+SCALE_FACTOR = 0.6
+
+RED_CAR = pygame.transform.scale(RED_CAR, (SCALE_FACTOR*CAR_WIDTH, SCALE_FACTOR*CAR_HEIGHT))
+PURPLE_CAR = pygame.transform.scale(PURPLE_CAR, (SCALE_FACTOR*CAR_WIDTH, SCALE_FACTOR*CAR_HEIGHT))
+
+
 MARGIN = 50
 
 WIDTH = TRACK.get_width() + MARGIN  
@@ -31,6 +40,7 @@ def main():
     WIN.blit(GRASS, GRASS_RECT)
     WIN.blit(TRACK, TRACK_RECT)
     WIN.blit(BORDER, BORDER_RECT)
+    WIN.blit(PURPLE_CAR, (0, 0))
 
     pygame.display.update()
 
