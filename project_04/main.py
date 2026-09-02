@@ -33,14 +33,18 @@ BORDER_RECT = BORDER.get_rect(center=WIN.get_rect().center)
 
 FPS = 60
 
+images = [(GRASS,GRASS_RECT), (TRACK, TRACK_RECT), (BORDER, BORDER_RECT)]
+
+def draw(window, images):
+
+    for image, pos in images:
+        window.blit(image, pos)
+
 def main():
 
     clock = pygame.time.Clock()
 
-    WIN.blit(GRASS, GRASS_RECT)
-    WIN.blit(TRACK, TRACK_RECT)
-    WIN.blit(BORDER, BORDER_RECT)
-    WIN.blit(PURPLE_CAR, (0, 0))
+    draw(WIN, images)    
 
     pygame.display.update()
 
