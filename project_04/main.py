@@ -43,6 +43,13 @@ class AbstractCar:
         self.rotation_vel = rotation_vel
         self.angle = 0
 
+    def rotate(self, left=False, right=False):
+        
+        if left:
+            self.angle += self.rotation_vel
+        elif right:
+            self.angle -= self.rotation_vel
+
 def draw(window, images):
 
     for image, pos in images:
