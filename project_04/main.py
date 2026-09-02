@@ -2,7 +2,6 @@ import pygame
 import time
 import math
 
-GRASS = pygame.image.load("./project_04/assets/imgs/grass.jpg")
 TRACK = pygame.image.load("./project_04/assets/imgs/track.png")
 BORDER = pygame.image.load("./project_04/assets/imgs/track-border.png")
 FINISH = pygame.image.load("./project_04/assets/imgs/finish.png")
@@ -11,6 +10,9 @@ PURPLE_CAR = pygame.image.load("./project_04/assets/imgs/purple-car.png")
 
 WIDTH = TRACK.get_width() 
 HEIGHT = TRACK.get_height() 
+
+
+GRASS = pygame.transform.scale(pygame.image.load("./project_04/assets/imgs/grass.jpg"), (WIDTH, HEIGHT))
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Racing Game")
