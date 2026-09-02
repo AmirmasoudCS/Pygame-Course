@@ -60,7 +60,7 @@ class AbstractCar:
 
 class PlayerCar(AbstractCar):
 
-    START_POS = (180, 200)
+    START_POS = (190, 200)
     IMG = PURPLE_CAR
     
 
