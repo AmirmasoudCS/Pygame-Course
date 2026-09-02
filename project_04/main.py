@@ -15,7 +15,10 @@ WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Racing Game")
 
 GRASS = pygame.transform.scale(pygame.image.load("./project_04/assets/imgs/grass.jpg"), (WIDTH, HEIGHT))
+
 GRASS_RECT = GRASS.get_rect(center=WIN.get_rect().center)
+TRACK_RECT = TRACK.get_rect(center=WIN.get_rect().center)
+BORDER_RECT = BORDER.get_rect(center=WIN.get_rect().center)
 
 FPS = 60
 
@@ -24,8 +27,8 @@ def main():
     clock = pygame.time.Clock()
 
     WIN.blit(GRASS, GRASS_RECT)
-    WIN.blit(TRACK, (0, 0))
-    WIN.blit(BORDER, (0, 0))
+    WIN.blit(TRACK, TRACK_RECT)
+    WIN.blit(BORDER, BORDER_RECT)
 
     pygame.display.update()
 
