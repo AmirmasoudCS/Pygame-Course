@@ -15,13 +15,19 @@ HEIGHT = TRACK.get_height()
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Racing Game")
 
+def main():
 
-run = True
-while run:
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            run = False
-            break
+    run = True
+    while run:
 
-pygame.quit()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+                break
+
+    pygame.quit()
+
+
+if __name__ == "__main__":
+    main()
