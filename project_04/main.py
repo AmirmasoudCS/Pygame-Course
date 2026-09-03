@@ -300,9 +300,10 @@ def move_player(player_car):
 
 def save_path(path):
     with open(PATH_FILE, "w") as file:
-        json.dump(path, file)
+        json.dump(path, file, indent=4)
 
-    print(f"Path saved: {len(path)} points")
+    print(f"Path saved to: {PATH_FILE}")
+    print(f"Saved {len(path)} points")
 
 
 def load_path():
