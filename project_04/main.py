@@ -93,6 +93,24 @@ def draw(window, images, player_car):
     player_car.draw(window)
     pygame.display.update()
 
+def move_player(player_car):
+    keys = pygame.key.get_pressed()
+    moved = False
+
+    if keys[pygame.K_a]:
+        player_car.rotate(left=True)
+    if keys[pygame.K_d]:
+        player_car.rotate(right=True)
+    if keys[pygame.K_w]:
+        moved = True
+        player_car.move_forward()
+    if keys[pygame.K_s]:
+        moved = True
+        player_car.move_backward()
+
+    if not moved:
+        player_car.reduce_speed()
+
 player_car = PlayerCar(3, 3)
 
 def main():
@@ -113,22 +131,8 @@ def main():
                 run = False
                 break
 
-        keys = pygame.key.get_pressed()
-        moved = False
-
-        if keys[pygame.K_a]:
-            player_car.rotate(left=True)
-        if keys[pygame.K_d]:
-            player_car.rotate(right=True)
-        if keys[pygame.K_w]:
-            moved = True
-            player_car.move_forward()
-        if keys[pygame.K_s]:
-            moved = True
-            player_car.move_backward()
-
-        if not moved:
-            player_car.reduce_speed()
+        move_player(player_car)
+        
         
         draw(WIN, images, player_car)
 
