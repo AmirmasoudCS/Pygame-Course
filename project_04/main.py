@@ -151,7 +151,7 @@ def main():
 
         move_player(player_car)
 
-        if player_car.collide(BORDER_MASK) != None:
+        if player_car.collide(BORDER_MASK, BORDER_RECT.x, BORDER_RECT.y) != None:
             player_car.bounce()
         
         draw(WIN, images, player_car)
