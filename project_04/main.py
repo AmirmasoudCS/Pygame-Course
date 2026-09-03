@@ -141,6 +141,10 @@ class ComputerCar(AbstractCar):
         for point in self.path:
             pygame.draw.circle(window, (255, 100, 100), point, 5)
 
+    def draw(self, win):
+        super().draw(win)
+        self.draw_points(win)
+
 
 
 
