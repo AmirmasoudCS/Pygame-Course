@@ -181,7 +181,10 @@ class ComputerCar(AbstractCar):
         if self.current_point >= len(self.path):
             self.current_point = 0
 
-        target_x, target_y = self.path[self.current_point]
+        look_ahead = 8
+        target_index = (self.current_point + look_ahead) % len(self.path)
+
+        target_x, target_y = self.path[target_index]
 
         dx = target_x - self.x
         dy = target_y - self.y
@@ -193,7 +196,7 @@ class ComputerCar(AbstractCar):
             return
 
         target_angle = math.degrees(
-            math.atan2(dx, -dy)
+            math.atan2(-dx, -dy)
         )
 
         angle_difference = (
