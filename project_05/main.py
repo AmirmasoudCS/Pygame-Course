@@ -15,7 +15,6 @@ def main():
     run = True
     clock = pygame.time.Clock()
     board = Board()
-    board.create_board()
 
     while run:
 
