@@ -346,6 +346,7 @@ def main():
                     computer_car.angle = 0
 
         move_player(player_car)
+        computer_car.follow_path()
 
         finish_poi_collide = player_car.collide(FINISH_MASK, *FINISH_POSITION)
 
