@@ -298,6 +298,20 @@ def move_player(player_car):
         player_car.y = old_y
         player_car.bounce()
 
+def save_path(path):
+    with open(PATH_FILE, "w") as file:
+        json.dump(path, file)
+
+    print(f"Path saved: {len(path)} points")
+
+
+def load_path():
+    try:
+        with open(PATH_FILE, "r") as file:
+            return [tuple(point) for point in json.load(file)]
+    except FileNotFoundError:
+        return []
+
 
 player_car = PlayerCar(3, 3)
 computer_car = ComputerCar(3, 3)
