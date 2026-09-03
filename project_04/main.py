@@ -60,7 +60,8 @@ IMAGES = [
     (BORDER, BORDER_RECT)
 ]
 
-
+DARK_OVERLAY = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
+DARK_OVERLAY.fill((0, 0, 0, 120))
 class AbstractCar:
     IMG = RED_CAR
 
@@ -233,6 +234,8 @@ def draw(window):
     computer_car.draw(window)
 
     if race_finished:
+        
+        window.blit(DARK_OVERLAY, (0, 0))
         font = pygame.font.Font(None, 80)
         font.set_bold(True)
 
