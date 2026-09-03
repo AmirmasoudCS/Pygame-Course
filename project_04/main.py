@@ -129,10 +129,10 @@ def draw(window):
 
 def move_player(player_car):
     keys = pygame.key.get_pressed()
-    moved = False
 
     old_x = player_car.x
     old_y = player_car.y
+    old_angle = player_car.angle
 
     if keys[pygame.K_a]:
         player_car.rotate(left=True)
@@ -141,23 +141,16 @@ def move_player(player_car):
         player_car.rotate(right=True)
 
     if keys[pygame.K_w]:
-        moved = True
         player_car.move_forward()
-
-    if keys[pygame.K_s]:
-        moved = True
+    elif keys[pygame.K_s]:
         player_car.move_backward()
-
-    if not moved:
+    else:
         player_car.reduce_speed()
 
-    if player_car.collide(
-        BORDER_MASK,
-        BORDER_RECT.x,
-        BORDER_RECT.y
-    ):
+    if player_car.collide(BORDER_MASK, BORDER_RECT.x, BORDER_RECT.y):
         player_car.x = old_x
         player_car.y = old_y
+        player_car.angle = old_angle
         player_car.bounce()
 
 
