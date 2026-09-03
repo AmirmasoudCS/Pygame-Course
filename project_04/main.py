@@ -60,6 +60,10 @@ class AbstractCar:
         self.vel = min(self.vel+self.acceleration, self.max_vel)
         self.move()
 
+    def move_backward(self):
+        self.vel = max(self.vel - self.acceleration, -self.max_vel/2)
+        self.move()
+
     def move(self):
         radians = math.radians(self.angle)
         vertical = math.cos(radians) * self.vel
