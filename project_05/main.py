@@ -24,8 +24,16 @@ def main():
     while run:
 
         clock.tick(FPS)
-        pass
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+                break
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                pass
 
 
+    pygame.quit()
+    
 if __name__ == "__main__":
     main()
