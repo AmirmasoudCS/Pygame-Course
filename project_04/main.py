@@ -1,6 +1,12 @@
 import pygame
 import math
 from project_04.utils import blit_rotate_center
+import pygame
+import math
+import json
+from project_04.utils import blit_rotate_center
+
+PATH_FILE = "./project_04/assets/computer_path.json"
 
 DEV_MODE = True
 
@@ -131,23 +137,88 @@ class ComputerCar(AbstractCar):
     START_POS = (230, 200)
     IMG = RED_CAR
 
-    def __init__(self, max_vel, rotation_vel, path=[]):
+    def __init__(self, max_vel, rotation_vel, path=None):
         super().__init__(max_vel, rotation_vel)
-        self.path = path
+        self.path = path if path is not None else []
         self.current_point = 0
         self.vel = max_vel
 
     def draw_points(self, window):
-        for point in self.path:
-            pygame.draw.circle(window, (255, 100, 100), point, 5)
+        if not self.path:
+            return
+
+        if len(self.path) > 1:
+            pygame.draw.lines(
+                window,
+                (255, 100, 100),
+                False,
+                self.path,
+                2
+            )
+
+        for i, point in enumerate(self.path):
+            pygame.draw.circle(
+                window,
+                (255, 100, 100),
+                point,
+                5
+            )
+
+            # Highlight current target
+            if i == self.current_point:
+                pygame.draw.circle(
+                    window,
+                    (255, 255, 0),
+                    point,
+                    8,
+                    2
+                )
+
+    def follow_path(self):
+        if not self.path:
+            return
+
+        if self.current_point >= len(self.path):
+            self.vel = 0
+            return
+
+        target_x, target_y = self.path[self.current_point]
+
+        dx = target_x - self.x
+        dy = target_y - self.y
+
+        distance = math.hypot(dx, dy)
+
+        if distance < 10:
+            self.current_point += 1
+            return
+
+        target_angle = math.degrees(
+            math.atan2(dx, -dy)
+        )
+
+        angle_difference = (
+            target_angle - self.angle + 180
+        ) % 360 - 180
+
+        if angle_difference > 0:
+            self.angle += min(
+                self.rotation_vel,
+                angle_difference
+            )
+        elif angle_difference < 0:
+            self.angle -= min(
+                self.rotation_vel,
+                -angle_difference
+            )
+
+        self.move_forward()
 
     def draw(self, win):
         super().draw(win)
-        self.draw_points(win)
 
-
-
-
+        if DEV_MODE:
+            self.draw_points(win)
 
 def draw(window):
     for image, position in IMAGES:
