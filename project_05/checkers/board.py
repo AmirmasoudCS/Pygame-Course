@@ -35,6 +35,9 @@ class Board:
             elif piece.color == RED:
                 red_kings += 1
 
+    def get_piece(self, row, col):
+        return self.board[row][col]
+
     def create_board(self):
         for row in range(ROWS):
             self.board.append([])
