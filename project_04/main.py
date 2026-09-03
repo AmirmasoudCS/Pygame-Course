@@ -181,10 +181,17 @@ class ComputerCar(AbstractCar):
         if self.current_point >= len(self.path):
             self.current_point = 0
 
-        target_x, target_y = self.path[self.current_point]
+        if self.current_point >= len(self.path):
+            self.current_point = 0
+
+        look_ahead = 5
+        target_index = (self.current_point + look_ahead) % len(self.path)
+
+        target_x, target_y = self.path[target_index]
 
         dx = target_x - self.x
         dy = target_y - self.y
+
         distance = math.hypot(dx, dy)
 
         if distance < 15:
@@ -203,7 +210,6 @@ class ComputerCar(AbstractCar):
             self.angle -= min(self.rotation_vel, -angle_difference)
 
         self.vel = min(self.vel + self.acceleration, self.max_vel)
-
         self.move()
 
     def draw(self, win):
