@@ -365,6 +365,8 @@ def main():
                     computer_car.x, computer_car.y = computer_car.START_POS
                     computer_car.angle = 0
 
+        global race_finished
+
         if not race_finished:
             move_player(player_car)
             computer_car.follow_path()
