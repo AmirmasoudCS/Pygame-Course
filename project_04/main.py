@@ -150,6 +150,7 @@ def draw(window):
         window.blit(image, position)
 
     player_car.draw(window)
+    computer_car.draw(window)
 
     if DEV_MODE:
         draw_debug(window)
