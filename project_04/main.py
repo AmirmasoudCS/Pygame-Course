@@ -137,6 +137,12 @@ def draw(window):
 
     pygame.display.update()
 
+def draw_mask_outline(window, mask, rect):
+    mask_surface = mask.to_surface(
+        setcolor=(255, 0, 0, 100),
+        unsetcolor=(0, 0, 0, 0)
+    )
+    window.blit(mask_surface, rect)
 
 def move_player(player_car):
     keys = pygame.key.get_pressed()
