@@ -85,7 +85,7 @@ def draw(window, images, player_car):
     player_car.draw(window)
     pygame.display.update()
 
-player_car = PlayerCar(4, 4)
+player_car = PlayerCar(3, 3)
 
 def main():
 
