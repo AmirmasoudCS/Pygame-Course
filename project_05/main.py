@@ -1,8 +1,13 @@
 import pygame
-from project_05.checkers import (
+from project_05.checkers.constants import (
     WIDTH,
     HEIGHT,
-    
+    ROWS,
+    COLS,
+    WHITE,
+    BLACK,
+    BLUE,
+    RED,
 )
 
 
