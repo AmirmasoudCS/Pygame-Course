@@ -4,11 +4,17 @@ from project_05.checkers.constants import (
     WIDTH,
     HEIGHT,
     FPS,
+    SQUARE_SIZE
 )
 from project_05.checkers.board import Board
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Checkers")
+
+def get_row_col_from_mouse(pos):
+    x, y = pos
+    row, col = y // SQUARE_SIZE, x // SQUARE_SIZE
+    return row, col
 
 def main():
 
