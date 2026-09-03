@@ -1,7 +1,7 @@
 # Racing Game
 
 <div align="center">
-<img src="assets/demo.png">
+<img src="assets/imgs/demo.png">
 <p><em>A screenshot of the game.</em></p>
 </div>
 
@@ -21,7 +21,7 @@ The player controls a racing car and competes against a computer-controlled car 
 ### Development Mode
 
 <div align="center">
-<img src="assets/development.png">
+<img src="assets/imgs/development.png">
 <p><em>Development mode showing the computer car's waypoint path and collision debugging.</em></p>
 </div>
 
