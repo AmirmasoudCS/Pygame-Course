@@ -89,7 +89,6 @@ class AbstractCar:
 
     def bounce(self):
         self.vel = -self.vel
-        self.move()
 
     def draw(self, window):
         blit_rotate_center(window, self.img, (self.x, self.y), self.angle)
@@ -115,19 +114,30 @@ def move_player(player_car):
     keys = pygame.key.get_pressed()
     moved = False
 
+    old_x = player_car.x
+    old_y = player_car.y
+
     if keys[pygame.K_a]:
         player_car.rotate(left=True)
+
     if keys[pygame.K_d]:
         player_car.rotate(right=True)
+
     if keys[pygame.K_w]:
         moved = True
         player_car.move_forward()
+
     if keys[pygame.K_s]:
         moved = True
         player_car.move_backward()
 
     if not moved:
         player_car.reduce_speed()
+
+    if player_car.collide(BORDER_MASK, BORDER_RECT.x, BORDER_RECT.y):
+        player_car.x = old_x
+        player_car.y = old_y
+        player_car.bounce()
 
 player_car = PlayerCar(3, 3)
 
@@ -153,6 +163,7 @@ def main():
 
         if player_car.collide(BORDER_MASK, BORDER_RECT.x, BORDER_RECT.y) != None:
             player_car.bounce()
+            player_car.move()
         
         draw(WIN, images, player_car)
 
