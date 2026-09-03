@@ -217,12 +217,13 @@ def main():
 
         move_player(player_car)
 
-        if player_car.collide(
-            FINISH_MASK,
-            FINISH_RECT.x,
-            FINISH_RECT.y
-        ):
-            print("FINISH!")
+        finish_poi_collide = player_car.collide(FINISH_MASK, *FINISH_POSITION)
+
+        if finish_poi_collide != None:
+            if finish_poi_collide[1] == 0:
+                player_car.bounce()
+            else:
+                print("Finish!")
 
         draw(WIN)
         pygame.display.update()
