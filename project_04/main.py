@@ -127,6 +127,19 @@ class PlayerCar(AbstractCar):
         self.vel = max(self.vel - self.acceleration / 2, 0)
         self.move()
 
+class ComputerCar(AbstractCar):
+    START_POS = (180, 200)
+    IMG = RED_CAR
+
+    def __init__(self, max_vel, rotation_vel, path=[]):
+        super().__init__(max_vel, rotation_vel)
+        self.path = path
+        self.current_point = 0
+        self.vel = max_vel
+
+    
+
+
 
 def draw(window):
     for image, position in IMAGES:
