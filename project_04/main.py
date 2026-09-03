@@ -353,7 +353,6 @@ def main():
         draw(WIN)
         pygame.display.update()
 
-    print(computer_car.path)
     if DEV_MODE:
         save_path(computer_car.path)
     pygame.quit()
