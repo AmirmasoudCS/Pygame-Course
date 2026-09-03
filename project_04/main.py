@@ -110,13 +110,18 @@ def main():
                 break
 
         keys = pygame.key.get_pressed()
+        moved = False
 
         if keys[pygame.K_a]:
             player_car.rotate(left=True)
         if keys[pygame.K_d]:
             player_car.rotate(right=True)
         if keys[pygame.K_w]:
+            moved = True
             player_car.move_forward()
+
+        if not moved:
+            player_car.reduce_speed()
         
         draw(WIN, images, player_car)
 
