@@ -72,10 +72,6 @@ class AbstractCar:
         self.y -= vertical
         self.x -= horizontal
 
-    def reduce_speed(self):
-        self.vel = max(self.vel - self.acceleration/2, 0)
-        self.move()
-
     def draw(self, window):
         blit_rotate_center(window, self.img, (self.x, self.y), self.angle)
 
@@ -83,7 +79,10 @@ class PlayerCar(AbstractCar):
 
     START_POS = (190, 200)
     IMG = PURPLE_CAR
-    
+
+    def reduce_speed(self):
+        self.vel = max(self.vel - self.acceleration/2, 0)
+        self.move()
 
 def draw(window, images, player_car):
 
