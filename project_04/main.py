@@ -2,7 +2,7 @@ import pygame
 import math
 from project_04.utils import blit_rotate_center
 
-DEV_MODE = True
+DEV_MODE = False
 
 TRACK = pygame.image.load("./project_04/assets/imgs/track.png")
 BORDER = pygame.image.load("./project_04/assets/imgs/track-border.png")
@@ -169,6 +169,9 @@ def draw_mask_outline(window, mask, rect):
 def move_player(player_car):
     keys = pygame.key.get_pressed()
 
+    old_x = player_car.x
+    old_y = player_car.y
+
     if keys[pygame.K_a]:
         player_car.rotate(left=True)
 
@@ -181,6 +184,15 @@ def move_player(player_car):
         player_car.move_backward()
     else:
         player_car.reduce_speed()
+
+    if player_car.collide(
+        BORDER_MASK,
+        BORDER_RECT.x,
+        BORDER_RECT.y
+    ):
+        player_car.x = old_x
+        player_car.y = old_y
+        player_car.bounce()
 
 
 player_car = PlayerCar(3, 3)
