@@ -332,7 +332,7 @@ def load_path():
 
 
 player_car = PlayerCar(3, 3)
-computer_car = ComputerCar(3, 3, load_path())
+computer_car = ComputerCar(2.75, 3, load_path())
 
 race_finished = False
 winner = None
