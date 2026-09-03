@@ -36,3 +36,11 @@ class Board:
                         self.board[row].append(0)
                 else:
                     self.board[row].append(0)
+
+    def draw(self, win):
+        self.draw_cubes()
+        for row in range(ROWS):
+            for col in range(COLS):
+                piece = self.board[row][col]
+                if piece != 0:
+                    piece.draw(win)
