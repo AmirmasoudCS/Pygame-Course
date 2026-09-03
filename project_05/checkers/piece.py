@@ -28,3 +28,6 @@ class Piece:
         radius = SQUARE_SIZE // 2 - self.PADDING
         pygame.draw.circle(win, GRAY, (self.x, self.y), radius + self.OUTLINE)
         pygame.draw.circle(win, self.color, (self.x, self.y), radius)
+
+    def __repr__(self):
+        return str(self.color)
