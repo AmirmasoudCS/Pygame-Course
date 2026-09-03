@@ -73,6 +73,13 @@ class AbstractCar:
         self.y -= vertical
         self.x -= horizontal
 
+    def collide(self, mask, x=0, y=0):
+        car_mask = pygame.mask.from_surface(self.img)
+        offset = (int(self.x - x), int(self.y - y))
+        poi = mask.overlap(car_mask, offset)
+        return poi
+
+
     def draw(self, window):
         blit_rotate_center(window, self.img, (self.x, self.y), self.angle)
 
