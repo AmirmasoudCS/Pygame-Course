@@ -79,6 +79,9 @@ class AbstractCar:
         poi = mask.overlap(car_mask, offset)
         return poi
 
+    def bounce(self):
+        self.vel = -self.vel
+        self.move()
 
     def draw(self, window):
         blit_rotate_center(window, self.img, (self.x, self.y), self.angle)
@@ -139,7 +142,9 @@ def main():
                 break
 
         move_player(player_car)
-        
+
+        if player_car.collide(BORDER_MASK) != None:
+            player_car.bounce()
         
         draw(WIN, images, player_car)
 
