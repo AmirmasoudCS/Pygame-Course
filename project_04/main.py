@@ -128,7 +128,7 @@ class PlayerCar(AbstractCar):
         self.move()
 
 class ComputerCar(AbstractCar):
-    START_POS = (180, 200)
+    START_POS = (230, 200)
     IMG = RED_CAR
 
     def __init__(self, max_vel, rotation_vel, path=[]):
