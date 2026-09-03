@@ -228,6 +228,7 @@ def main():
             if finish_poi_collide[1] == 0:
                 player_car.bounce()
             else:
+                player_car.reset()
                 print("Finish!")
 
         draw(WIN)
