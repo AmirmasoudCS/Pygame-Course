@@ -234,40 +234,70 @@ def draw(window):
     computer_car.draw(window)
 
     if race_finished:
-        
         window.blit(DARK_OVERLAY, (0, 0))
+
         font = pygame.font.Font(None, 80)
         font.set_bold(True)
 
-        text = font.render(
-            f"{winner} Wins!",
+        if winner == "Player":
+            winner_color = (180, 0, 255)  # Purple
+        else:
+            winner_color = (255, 0, 0)    # Red
+
+        # Render each part separately
+        winner_text = font.render(
+            winner,
+            True,
+            winner_color
+        )
+
+        wins_text = font.render(
+            " Wins!",
             True,
             (255, 255, 255)
         )
 
-        text_rect = text.get_rect(
-            center=(WIDTH // 2, HEIGHT // 2)
+        # Calculate total size
+        total_width = winner_text.get_width() + wins_text.get_width()
+        total_height = max(
+            winner_text.get_height(),
+            wins_text.get_height()
         )
 
-        # Draw black outline
+        text_x = WIDTH // 2 - total_width // 2
+        text_y = HEIGHT // 2 - total_height // 2
+
         outline_size = 3
 
+        # Draw black outline
         for dx in range(-outline_size, outline_size + 1):
             for dy in range(-outline_size, outline_size + 1):
-                outline_rect = text_rect.copy()
-                outline_rect.x += dx
-                outline_rect.y += dy
                 window.blit(
-                    font.render(
-                        f"{winner} Wins!",
-                        True,
-                        (0, 0, 0)
-                    ),
-                    outline_rect
+                    winner_text,
+                    (text_x + dx, text_y + dy)
+                )
+                window.blit(
+                    wins_text,
+                    (
+                        text_x + winner_text.get_width() + dx,
+                        text_y + dy
+                    )
                 )
 
-        # Draw main text
-        window.blit(text, text_rect)
+        # Draw colored winner name
+        window.blit(
+            winner_text,
+            (text_x, text_y)
+        )
+
+        # Draw white "Wins!"
+        window.blit(
+            wins_text,
+            (
+                text_x + winner_text.get_width(),
+                text_y
+            )
+        )
 
     if DEV_MODE:
         draw_debug(window)
