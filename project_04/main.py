@@ -141,6 +141,8 @@ def draw(window):
     car_rect = rotated_image.get_rect(
         center=(player_car.x, player_car.y)
     )
+    car_rect.x += 12
+    car_rect.y += 21
 
     pygame.draw.rect(window, (0, 0, 255), car_rect, 2)
 
