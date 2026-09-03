@@ -27,7 +27,7 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pass
 
-        board.draw_cubes()
+        board.draw_cubes(WIN)
 
     pygame.quit()
     
