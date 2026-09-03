@@ -105,6 +105,11 @@ class AbstractCar:
     def bounce(self):
         self.vel = -self.vel
 
+    def reset(self):
+        self.x, self.y = self.START_POS
+        self.angle = 0
+        self.vel = 0
+
     def draw(self, window):
         blit_rotate_center(
             window,
