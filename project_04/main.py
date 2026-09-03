@@ -8,7 +8,7 @@ from project_04.utils import blit_rotate_center
 
 PATH_FILE = "./project_04/assets/computer_path.json"
 
-DEV_MODE = True
+DEV_MODE = False
 
 TRACK = pygame.image.load("./project_04/assets/imgs/track.png")
 BORDER = pygame.image.load("./project_04/assets/imgs/track-border.png")
@@ -175,44 +175,36 @@ class ComputerCar(AbstractCar):
                 )
 
     def follow_path(self):
-        if not self.path:
+        if len(self.path) < 2:
             return
 
         if self.current_point >= len(self.path):
-            self.vel = 0
-            return
+            self.current_point = 0
 
         target_x, target_y = self.path[self.current_point]
 
         dx = target_x - self.x
         dy = target_y - self.y
-
         distance = math.hypot(dx, dy)
 
-        if distance < 10:
+        if distance < 15:
             self.current_point += 1
             return
 
-        target_angle = math.degrees(
-            math.atan2(dx, -dy)
-        )
+        target_angle = math.degrees(math.atan2(dx, -dy))
 
         angle_difference = (
             target_angle - self.angle + 180
         ) % 360 - 180
 
         if angle_difference > 0:
-            self.angle += min(
-                self.rotation_vel,
-                angle_difference
-            )
+            self.angle += min(self.rotation_vel, angle_difference)
         elif angle_difference < 0:
-            self.angle -= min(
-                self.rotation_vel,
-                -angle_difference
-            )
+            self.angle -= min(self.rotation_vel, -angle_difference)
 
-        self.move_forward()
+        self.vel = min(self.vel + self.acceleration, self.max_vel)
+
+        self.move()
 
     def draw(self, win):
         super().draw(win)
