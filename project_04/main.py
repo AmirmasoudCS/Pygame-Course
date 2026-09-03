@@ -240,11 +240,11 @@ def draw(window):
         font.set_bold(True)
 
         if winner == "Player":
-            winner_color = (180, 0, 255)  # Purple
+            winner_color = (180, 0, 255)
         else:
-            winner_color = (255, 0, 0)    # Red
+            winner_color = (255, 0, 0)
 
-        # Render each part separately
+        # Main text
         winner_text = font.render(
             winner,
             True,
@@ -257,8 +257,25 @@ def draw(window):
             (255, 255, 255)
         )
 
-        # Calculate total size
-        total_width = winner_text.get_width() + wins_text.get_width()
+        # Black outline versions
+        winner_outline = font.render(
+            winner,
+            True,
+            (0, 0, 0)
+        )
+
+        wins_outline = font.render(
+            " Wins!",
+            True,
+            (0, 0, 0)
+        )
+
+        # Calculate total text size
+        total_width = (
+            winner_text.get_width()
+            + wins_text.get_width()
+        )
+
         total_height = max(
             winner_text.get_height(),
             wins_text.get_height()
@@ -273,11 +290,12 @@ def draw(window):
         for dx in range(-outline_size, outline_size + 1):
             for dy in range(-outline_size, outline_size + 1):
                 window.blit(
-                    winner_text,
+                    winner_outline,
                     (text_x + dx, text_y + dy)
                 )
+
                 window.blit(
-                    wins_text,
+                    wins_outline,
                     (
                         text_x + winner_text.get_width() + dx,
                         text_y + dy
