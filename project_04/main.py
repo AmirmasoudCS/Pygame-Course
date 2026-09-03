@@ -123,6 +123,9 @@ def main():
         if keys[pygame.K_w]:
             moved = True
             player_car.move_forward()
+        if keys[pygame.K_s]:
+            moved = True
+            player_car.move_backward()
 
         if not moved:
             player_car.reduce_speed()
