@@ -25,4 +25,7 @@ def main():
 
         clock.tick(FPS)
         pass
-    
+
+
+if __name__ == "__main__":
+    main()
