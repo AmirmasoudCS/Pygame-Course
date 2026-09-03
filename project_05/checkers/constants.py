@@ -11,3 +11,5 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 BLUE = (0, 0, 255)
 GRAY = (128, 128, 128)
+
+CROWN = pygame.image.load("./project_05/assets/crown.png")
