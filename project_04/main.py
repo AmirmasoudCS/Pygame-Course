@@ -140,7 +140,8 @@ class ComputerCar(AbstractCar):
     def draw_points(self, window):
         for point in self.path:
             pygame.draw.circle(window, (255, 100, 100), point, 5)
-        
+
+
 
 
 
@@ -223,7 +224,7 @@ def move_player(player_car):
 
 
 player_car = PlayerCar(3, 3)
-
+computer_car = ComputerCar(3, 3)
 
 def main():
     clock = pygame.time.Clock()
