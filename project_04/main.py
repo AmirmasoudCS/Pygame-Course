@@ -5,7 +5,6 @@ from project_04.utils import blit_rotate_center
 
 TRACK = pygame.image.load("./project_04/assets/imgs/track.png")
 BORDER = pygame.image.load("./project_04/assets/imgs/track-border.png")
-BORDER_MASK = pygame.mask.from_surface(BORDER)
 FINISH = pygame.image.load("./project_04/assets/imgs/finish.png")
 RED_CAR = pygame.image.load("./project_04/assets/imgs/red-car.png")
 PURPLE_CAR = pygame.image.load("./project_04/assets/imgs/purple-car.png")
@@ -32,6 +31,8 @@ GRASS = pygame.transform.scale(pygame.image.load("./project_04/assets/imgs/grass
 GRASS_RECT = GRASS.get_rect(center=WIN.get_rect().center)
 TRACK_RECT = TRACK.get_rect(center=WIN.get_rect().center)
 BORDER_RECT = BORDER.get_rect(center=WIN.get_rect().center)
+BORDER_MASK = pygame.mask.from_surface(BORDER)
+BORDER_MASK_RECT = BORDER_MASK.get_rect(center=WIN.get_rect().center)
 
 FPS = 60
 
