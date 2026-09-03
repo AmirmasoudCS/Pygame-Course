@@ -181,9 +181,6 @@ class ComputerCar(AbstractCar):
         if self.current_point >= len(self.path):
             self.current_point = 0
 
-        if self.current_point >= len(self.path):
-            self.current_point = 0
-
         look_ahead = 5
         target_index = (self.current_point + look_ahead) % len(self.path)
 
@@ -191,7 +188,6 @@ class ComputerCar(AbstractCar):
 
         dx = target_x - self.x
         dy = target_y - self.y
-
         distance = math.hypot(dx, dy)
 
         if distance < 15:
