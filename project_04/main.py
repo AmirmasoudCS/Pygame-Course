@@ -5,6 +5,7 @@ import pygame
 import math
 import json
 from project_04.utils import blit_rotate_center
+pygame.font.init()
 
 PATH_FILE = "./project_04/assets/computer_path.json"
 
