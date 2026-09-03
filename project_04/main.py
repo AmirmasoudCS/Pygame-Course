@@ -124,6 +124,17 @@ def draw(window):
         window.blit(image, position)
 
     player_car.draw(window)
+
+    # Show border rectangle
+    pygame.draw.rect(window, (255, 0, 0), BORDER_RECT, 2)
+
+    # Show finish rectangle
+    pygame.draw.rect(window, (0, 255, 0), FINISH_RECT, 2)
+
+    # Show car rectangle
+    car_rect = player_car.img.get_rect(center=(player_car.x, player_car.y))
+    pygame.draw.rect(window, (0, 0, 255), car_rect, 2)
+
     pygame.display.update()
 
 
