@@ -3,15 +3,9 @@ import time
 from project_05.checkers.constants import (
     WIDTH,
     HEIGHT,
-    ROWS,
-    COLS,
-    WHITE,
-    BLACK,
-    BLUE,
-    RED,
     FPS,
 )
-
+from project_05.checkers.board import Board
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Checkers")
@@ -20,6 +14,7 @@ def main():
 
     run = True
     clock = pygame.time.Clock()
+    board = Board()
 
     while run:
 
@@ -32,6 +27,7 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pass
 
+        board.draw_cubes()
 
     pygame.quit()
     
