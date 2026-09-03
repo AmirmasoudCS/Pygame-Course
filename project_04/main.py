@@ -242,6 +242,10 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
 
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                pos = pygame.mouse.get_pos()
+                computer_car.path.append(pos)
+
         move_player(player_car)
 
         finish_poi_collide = player_car.collide(FINISH_MASK, *FINISH_POSITION)
@@ -256,6 +260,7 @@ def main():
         draw(WIN)
         pygame.display.update()
 
+    print(computer_car.path)
     pygame.quit()
 
 
