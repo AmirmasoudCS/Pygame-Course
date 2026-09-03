@@ -233,15 +233,37 @@ def draw(window):
     computer_car.draw(window)
 
     if race_finished:
-        font = pygame.font.Font(None, 60)
+        font = pygame.font.Font(None, 80)
+        font.set_bold(True)
+
         text = font.render(
             f"{winner} Wins!",
             True,
             (255, 255, 255)
         )
+
         text_rect = text.get_rect(
             center=(WIDTH // 2, HEIGHT // 2)
         )
+
+        # Draw black outline
+        outline_size = 3
+
+        for dx in range(-outline_size, outline_size + 1):
+            for dy in range(-outline_size, outline_size + 1):
+                outline_rect = text_rect.copy()
+                outline_rect.x += dx
+                outline_rect.y += dy
+                window.blit(
+                    font.render(
+                        f"{winner} Wins!",
+                        True,
+                        (0, 0, 0)
+                    ),
+                    outline_rect
+                )
+
+        # Draw main text
         window.blit(text, text_rect)
 
     if DEV_MODE:
