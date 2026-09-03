@@ -8,7 +8,7 @@ from project_04.utils import blit_rotate_center
 
 PATH_FILE = "./project_04/assets/computer_path.json"
 
-DEV_MODE = False
+DEV_MODE = True
 
 TRACK = pygame.image.load("./project_04/assets/imgs/track.png")
 BORDER = pygame.image.load("./project_04/assets/imgs/track-border.png")
