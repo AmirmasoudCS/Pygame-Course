@@ -123,6 +123,8 @@ def draw(window):
     for image, position in IMAGES:
         window.blit(image, position)
 
+    draw_mask_outline(window, BORDER_MASK, BORDER_RECT)
+
     player_car.draw(window)
 
     # Show border rectangle
