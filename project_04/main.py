@@ -92,6 +92,8 @@ class AbstractCar:
         rotated_image = pygame.transform.rotate(self.img, self.angle)
         car_mask = pygame.mask.from_surface(rotated_image)
         car_rect = rotated_image.get_rect(center=(self.x, self.y))
+        car_rect.x += 12
+        car_rect.y += 21
 
         offset = (
             car_rect.x - int(x),
