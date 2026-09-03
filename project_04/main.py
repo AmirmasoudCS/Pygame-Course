@@ -367,6 +367,7 @@ def main():
                     computer_car.angle = 0
 
         global race_finished
+        global winner
 
         if not race_finished:
             move_player(player_car)
