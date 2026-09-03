@@ -328,8 +328,22 @@ def main():
                 run = False
 
             if event.type == pygame.MOUSEBUTTONDOWN:
-                pos = pygame.mouse.get_pos()
-                computer_car.path.append(pos)
+                if DEV_MODE and event.button == 1:
+                    pos = pygame.mouse.get_pos()
+                    computer_car.path.append(pos)
+
+            if event.type == pygame.KEYDOWN:
+                if DEV_MODE and event.key == pygame.K_s:
+                    save_path(computer_car.path)
+
+                if DEV_MODE and event.key == pygame.K_c:
+                    computer_car.path.clear()
+                    computer_car.current_point = 0
+
+                if DEV_MODE and event.key == pygame.K_r:
+                    computer_car.current_point = 0
+                    computer_car.x, computer_car.y = computer_car.START_POS
+                    computer_car.angle = 0
 
         move_player(player_car)
 
