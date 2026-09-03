@@ -231,6 +231,18 @@ def draw(window):
     player_car.draw(window)
     computer_car.draw(window)
 
+    if race_finished:
+        font = pygame.font.Font(None, 60)
+        text = font.render(
+            f"{winner} Wins!",
+            True,
+            (255, 255, 255)
+        )
+        text_rect = text.get_rect(
+            center=(WIDTH // 2, HEIGHT // 2)
+        )
+        window.blit(text, text_rect)
+
     if DEV_MODE:
         draw_debug(window)
 
