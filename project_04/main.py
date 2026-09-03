@@ -321,6 +321,9 @@ def load_path():
 player_car = PlayerCar(3, 3)
 computer_car = ComputerCar(3, 3, load_path())
 
+race_finished = False
+winner = None
+
 def main():
     clock = pygame.time.Clock()
     run = True
@@ -350,17 +353,25 @@ def main():
                     computer_car.x, computer_car.y = computer_car.START_POS
                     computer_car.angle = 0
 
-        move_player(player_car)
-        computer_car.follow_path()
+        if not race_finished:
+            move_player(player_car)
+            computer_car.follow_path()
 
-        finish_poi_collide = player_car.collide(FINISH_MASK, *FINISH_POSITION)
+        player_finish = player_car.collide(
+            FINISH_MASK,
+            *FINISH_POSITION
+        )
+        computer_finish = computer_car.collide(
+            FINISH_MASK,
+            *FINISH_POSITION
+        )
+        if player_finish is not None:
+            race_finished = True
+            winner = "Player"
 
-        if finish_poi_collide != None:
-            if finish_poi_collide[1] == 0:
-                player_car.bounce()
-            else:
-                player_car.reset()
-                print("Finish!")
+        elif computer_finish is not None:
+            race_finished = True
+            winner = "Computer"
 
         draw(WIN)
         pygame.display.update()
