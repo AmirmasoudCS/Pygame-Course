@@ -178,22 +178,23 @@ class ComputerCar(AbstractCar):
         if len(self.path) < 2:
             return
 
-        if self.current_point >= len(self.path):
-            self.current_point = 0
+        nearest_index = min(
+            range(len(self.path)),
+            key=lambda i: math.hypot(
+                self.path[i][0] - self.x,
+                self.path[i][1] - self.y
+            )
+        )
 
-        look_ahead = 8
-        target_index = (self.current_point + look_ahead) % len(self.path)
+        self.current_point = nearest_index
+
+        look_ahead = 2
+        target_index = (nearest_index + look_ahead) % len(self.path)
 
         target_x, target_y = self.path[target_index]
 
         dx = target_x - self.x
         dy = target_y - self.y
-
-        distance = math.hypot(dx, dy)
-
-        if distance < 20:
-            self.current_point += 1
-            return
 
         target_angle = math.degrees(
             math.atan2(-dx, -dy)
