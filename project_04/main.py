@@ -181,31 +181,37 @@ class ComputerCar(AbstractCar):
         if self.current_point >= len(self.path):
             self.current_point = 0
 
-        look_ahead = 5
-        target_index = (self.current_point + look_ahead) % len(self.path)
-
-        target_x, target_y = self.path[target_index]
+        target_x, target_y = self.path[self.current_point]
 
         dx = target_x - self.x
         dy = target_y - self.y
+
         distance = math.hypot(dx, dy)
 
-        if distance < 15:
+        if distance < 20:
             self.current_point += 1
             return
 
-        target_angle = math.degrees(math.atan2(dx, -dy))
+        target_angle = math.degrees(
+            math.atan2(dx, -dy)
+        )
 
         angle_difference = (
             target_angle - self.angle + 180
         ) % 360 - 180
 
         if angle_difference > 0:
-            self.angle += min(self.rotation_vel, angle_difference)
+            self.angle += min(
+                self.rotation_vel,
+                angle_difference
+            )
         elif angle_difference < 0:
-            self.angle -= min(self.rotation_vel, -angle_difference)
+            self.angle -= min(
+                self.rotation_vel,
+                -angle_difference
+            )
 
-        self.vel = min(self.vel + self.acceleration, self.max_vel)
+        self.vel = self.max_vel
         self.move()
 
     def draw(self, win):
