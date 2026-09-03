@@ -3,7 +3,7 @@ from project_05.checkers.constants import WHITE, SQUARE_SIZE, GRAY
 
 class Piece:
 
-    PADDING = 10
+    PADDING = 17
     OUTLINE = 2
 
     def __init__(self, row, col, color):
