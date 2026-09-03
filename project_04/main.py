@@ -6,6 +6,7 @@ from project_04.utils import blit_rotate_center
 TRACK = pygame.image.load("./project_04/assets/imgs/track.png")
 BORDER = pygame.image.load("./project_04/assets/imgs/track-border.png")
 FINISH = pygame.image.load("./project_04/assets/imgs/finish.png")
+FINISH_POSITION = (130, 250)
 RED_CAR = pygame.image.load("./project_04/assets/imgs/red-car.png")
 PURPLE_CAR = pygame.image.load("./project_04/assets/imgs/purple-car.png")
 
@@ -36,7 +37,7 @@ BORDER_MASK_RECT = BORDER_MASK.get_rect(center=WIN.get_rect().center)
 
 FPS = 60
 
-images = [(GRASS,GRASS_RECT), (TRACK, TRACK_RECT), (BORDER, BORDER_RECT)]
+images = [(GRASS,GRASS_RECT), (TRACK, TRACK_RECT), (BORDER, BORDER_RECT), (FINISH, FINISH_POSITION)]
 
 class AbstractCar:
 
