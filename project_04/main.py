@@ -2,6 +2,8 @@ import pygame
 import math
 from project_04.utils import blit_rotate_center
 
+DEV_MODE = True
+
 TRACK = pygame.image.load("./project_04/assets/imgs/track.png")
 BORDER = pygame.image.load("./project_04/assets/imgs/track-border.png")
 FINISH = pygame.image.load("./project_04/assets/imgs/finish.png")
@@ -123,14 +125,20 @@ def draw(window):
     for image, position in IMAGES:
         window.blit(image, position)
 
-    draw_mask_outline(window, BORDER_MASK, BORDER_RECT)
-
     player_car.draw(window)
 
-    # Show border rectangle
+    if DEV_MODE:
+        draw_debug(window)
+
+
+def draw_debug(window):
+    # Border mask
+    draw_mask_outline(window, BORDER_MASK, BORDER_RECT)
+
+    # Border rectangle
     pygame.draw.rect(window, (255, 0, 0), BORDER_RECT, 2)
 
-    # Show finish rectangle
+    # Finish rectangle
     pygame.draw.rect(window, (0, 255, 0), FINISH_RECT, 2)
 
     # Actual rotated car rectangle
@@ -138,15 +146,17 @@ def draw(window):
         player_car.img,
         player_car.angle
     )
+
     car_rect = rotated_image.get_rect(
         center=(player_car.x, player_car.y)
     )
+
+    # Manual collision alignment adjustments
     car_rect.x += 12
     car_rect.y += 21
 
     pygame.draw.rect(window, (0, 0, 255), car_rect, 2)
 
-    pygame.display.update()
 
 def draw_mask_outline(window, mask, rect):
     mask_surface = mask.to_surface(
@@ -154,6 +164,7 @@ def draw_mask_outline(window, mask, rect):
         unsetcolor=(0, 0, 0, 0)
     )
     window.blit(mask_surface, rect)
+
 
 def move_player(player_car):
     keys = pygame.key.get_pressed()
@@ -196,6 +207,7 @@ def main():
             print("FINISH!")
 
         draw(WIN)
+        pygame.display.update()
 
     pygame.quit()
 
