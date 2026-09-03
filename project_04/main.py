@@ -61,7 +61,12 @@ class AbstractCar:
         self.move()
 
     def move(self):
-        self.x += self.vel
+        radians = math.radians(self.angle)
+        vertical = math.cos(radians) * self.vel
+        horizontal = math.sin(radians) * self.vel
+
+        self.y -= vertical
+        self.x -= horizontal
 
     def draw(self, window):
         blit_rotate_center(window, self.img, (self.x, self.y), self.angle)
