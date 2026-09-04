@@ -11,7 +11,7 @@ class Piece:
         self.col = col
         self.color = color
         self.king = False
-        self.direction = 1 if self.color == WHITE else -1
+
         self.x = 0
         self.y = 0
         self.calc_pos()
