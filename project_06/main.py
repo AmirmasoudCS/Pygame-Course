@@ -35,9 +35,9 @@ class Paddle:
 
     def move(self, up=False, down=False):
         if up and self.y - self.velocity - self.height // 2 > 0:
-            self.y - self.velocity
+            self.y -= self.velocity
         if down and self.y + self.velocity - self.height <= HEIGHT:
-            self.y + self.velocity
+            self.y += self.velocity
 
 def draw(win, l_paddle, r_paddle):
 
