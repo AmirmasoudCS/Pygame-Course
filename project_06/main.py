@@ -25,12 +25,17 @@ pygame.display.set_caption("Pong")
 
 class Ball:
 
+    COLOR = WHITE
+
     def __init__(self, x=WIDTH//2-BALL_RADIUS//2, y=HEIGHT//2-BALL_RADIUS//2, radius=BALL_RADIUS, velocity=BALL_VELOCITY):
         self.x = x
         self.y = y
         self.radius = radius
         self.x_velocity = velocity
         self.y_velocity = velocity
+
+    def draw(self, win):
+        pygame.draw.circle(win, self.COLOR, (self.x, self.y), self.radius)
 class Paddle:
 
     COLOR = WHITE
