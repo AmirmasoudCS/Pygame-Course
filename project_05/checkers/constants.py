@@ -1,5 +1,6 @@
 import pygame
 pygame.font.init()
+pygame.mixer.init()
 
 FONT = pygame.font.SysFont("arial", 60, bold=True)
 FPS = 60
