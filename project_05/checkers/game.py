@@ -11,6 +11,7 @@ from project_05.checkers.constants import (
     DARK_OVERLAY,
     MOVE_SOUND,
     CAPTURE_SOUND,
+    KING,
 )
 
 class Game:
@@ -68,9 +69,12 @@ class Game:
     def _move(self, row, col):
         piece = self.board.get_piece(row, col)
         if self.selected and piece == 0 and (row, col) in self.valid_moves:
+            was_king = self.selected.king
             self.board.move(self.selected, row, col)
             MOVE_SOUND.play()
-            skipped = self.valid_moves[(row ,col)]
+            if not was_king and self.selected.king:
+                KING.play()
+            skipped = self.valid_moves[(row, col)]
             if skipped:
                 self.board.remove(skipped)
                 CAPTURE_SOUND.play()
@@ -95,5 +99,8 @@ class Game:
         return self.board
 
     def ai_move(self, board):
+        old_white_kings = self.board.white_kings
         self.board = board
+        if self.board.white_kings > old_white_kings:
+            KING.play()
         self.change_turn()
