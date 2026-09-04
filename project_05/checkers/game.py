@@ -8,15 +8,19 @@ from project_05.checkers.constants import (
 class Game:
 
     def __init__(self, win):
-        self.selected = None
-        self.board = Board()
-        self.turn = RED
-        self.valid_moves = {}
         self.win = win
+        self.init()
 
     def update(self):
         self.board.draw(self.win)
 
         pygame.display.update()
 
-     
+    def init(self):
+        self.selected = None
+        self.board = Board()
+        self.turn = RED
+        self.valid_moves = {}
+
+    def reset(self):
+        self.init()
