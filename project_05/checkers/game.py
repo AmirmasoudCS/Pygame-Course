@@ -46,3 +46,10 @@ class Game:
         else:
             return False
         return True
+
+    def change_turn(self):
+        if self.turn == RED:
+            self.turn = WHITE
+        else:
+            self.turn = RED
+            
