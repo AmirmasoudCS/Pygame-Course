@@ -5,6 +5,10 @@ from project_05.checkers.constants import (
     WHITE,
     BLUE,
     SQUARE_SIZE,
+    FONT,
+    WIDTH, 
+    HEIGHT,
+    DARK_OVERLAY,
 )
 
 class Game:
@@ -27,6 +31,23 @@ class Game:
 
     def reset(self):
         self._init()
+
+    def winner(self):
+        return self.board.winner()
+
+    def draw_winner(self, winner):
+        overlay = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
+        overlay.fill(DARK_OVERLAY)
+        self.win.blit(overlay, (0, 0))
+
+        winner_name = "Red" if winner == RED else "White"
+        winner_color = RED if winner == RED else WHITE
+
+        text = FONT.render(f"{winner_name} Wins!", True, winner_color)
+        text_rect = text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+        self.win.blit(text, text_rect)
+
+        pygame.display.update()
 
     def select(self, row, col):
         if self.selected:
