@@ -9,6 +9,8 @@ from project_05.checkers.constants import (
     WIDTH, 
     HEIGHT,
     DARK_OVERLAY,
+    MOVE_SOUND,
+    CAPTURE_SOUND,
 )
 
 class Game:
@@ -67,9 +69,11 @@ class Game:
         piece = self.board.get_piece(row, col)
         if self.selected and piece == 0 and (row, col) in self.valid_moves:
             self.board.move(self.selected, row, col)
+            MOVE_SOUND.play()
             skipped = self.valid_moves[(row ,col)]
             if skipped:
                 self.board.remove(skipped)
+                CAPTURE_SOUND.play()
             self.change_turn()
         else:
             return False
