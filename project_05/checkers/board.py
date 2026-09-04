@@ -24,6 +24,9 @@ class Board:
             for col in range(row % 2, ROWS, 2):
                 pygame.draw.rect(win, RED, (row*SQUARE_SIZE, col*SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
 
+    def evaluate(self):
+        return ((self.white_left - self.red_left) + ((self.white_kings * 0.5) - (self.red_kings * 0.5)))
+
     def move(self, piece, row, col):
         self.board[piece.row][piece.col], self.board[row][col] = self.board[row][col], self.board[piece.row][piece.col]
         piece.move(row, col)
