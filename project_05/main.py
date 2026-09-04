@@ -27,6 +27,9 @@ def main():
 
         clock.tick(FPS)
 
+        if game.board.winner() != None:
+            print(f"{game.board.winner()} Wins!")
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
