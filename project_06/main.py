@@ -27,11 +27,17 @@ class Paddle:
         self.y = y
         self.width = width
         self.height = height
+        self.velocity = 3
 
     def draw(self, win):
 
         pygame.draw.rect(win, self.COLOR, (self.x, self.y, self.width, self.height))
 
+    def move(self, up=False, down=False):
+        if up and self.y - self.velocity - self.height // 2 > 0:
+            self.y - self.velocity
+        if down and self.y + self.velocity - self.height <= HEIGHT:
+            self.y + self.velocity
 
 def draw(win, l_paddle, r_paddle):
 
