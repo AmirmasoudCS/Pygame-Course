@@ -9,3 +9,4 @@ A collection of small game development projects built with Python and Pygame as 
 * [👾 Space Shooter](./project_03/README.md)
 * [🏎️ Racing Game](./project_04/README.md)
 * [🔴⚪ Checkers](./project_05/README.md)
+* [🏓 Pong](./project_06/README.md)
