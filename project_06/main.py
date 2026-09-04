@@ -37,7 +37,7 @@ class Ball:
     def draw(self, win):
         pygame.draw.circle(win, self.COLOR, (self.x, self.y), self.radius)
 
-    def move(self):
+    def move(self, left_paddle, right_paddle):
 
         self.x += self.x_velocity
         self.y += self.y_velocity
@@ -47,6 +47,13 @@ class Ball:
 
         if self.y + self.radius >= HEIGHT:
             self.y_velocity *= -1
+
+        rect = self.get_rect()
+        if rect.colliderect(left_paddle.get_rect()):
+            self.x_velocity *= -1
+        if rect.colliderect(right_paddle.get_rect()):
+            self.x_velocity *= -1
+
 
     def get_rect(self):
         return pygame.Rect(self.x - self.radius, self.y - self.radius, self.radius*2, self.radius*2)
@@ -105,7 +112,7 @@ def main():
 
         clock.tick(FPS)
 
-        ball.move()
+        ball.move(left_paddle, right_paddle)
 
         draw(WIN, left_paddle, right_paddle, ball)
 
