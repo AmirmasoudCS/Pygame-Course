@@ -71,8 +71,8 @@ class Board:
         if piece.color == WHITE or piece.king:
             pass
 
-    def _traverse_left(self):
+    def _traverse_left(self, start, stop, step, color, left, skipped=[]):
         pass
 
-    def _traverse_right(self):
+    def _traverse_right(self, start, stop, step, color, left, skipped=[]):
         pass
