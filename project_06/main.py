@@ -12,7 +12,7 @@ FPS = 60
 
 FONT = pygame.font.SysFont("comicsans", 50)
 
-WIDTH, HEIGHT = 700, 500
+WIDTH, HEIGHT = 725, 515
 
 PADDLE_WIDTH, PADDLE_HEIGHT = 10, 70
 
