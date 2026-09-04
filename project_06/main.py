@@ -5,6 +5,7 @@ pygame.init()
 
 
 BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
 
 FPS = 60
 
@@ -22,7 +23,7 @@ pygame.display.set_caption("Pong")
 
 class Paddle:
 
-    COLOR = (255, 255, 255)
+    COLOR = WHITE
 
     def __init__(self, x, y, width=PADDLE_WIDTH, height=PADDLE_HEIGHT):
 
@@ -47,7 +48,7 @@ def draw(win, l_paddle, r_paddle):
     win.fill(BLACK)
 
     for i in range(0, HEIGHT, DASH_HEIGHT + DASH_GAP):
-        pygame.draw.rect(win, BLACK, (WIDTH//2-DASH_WIDTH, i, DASH_WIDTH, DASH_HEIGHT))
+        pygame.draw.rect(win, WHITE, (WIDTH//2-DASH_WIDTH, i, DASH_WIDTH, DASH_HEIGHT))
 
     l_paddle.draw(win)
     r_paddle.draw(win)
