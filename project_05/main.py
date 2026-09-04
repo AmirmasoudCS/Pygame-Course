@@ -45,12 +45,14 @@ def main():
 
         if winner is None:
             winner = game.winner()
+            if winner is not None:
+                pygame.mixer.music.stop()
+                FINISH.play()
+
         if winner is None:
             game.update()
         else:
             game.draw_winner(winner)
-            pygame.mixer.music.stop()
-            FINISH.play()
         
     pygame.quit()
     
