@@ -54,6 +54,13 @@ class Ball:
         if rect.colliderect(right_paddle.get_rect()):
             self.x_velocity *= -1
 
+        def reset(self):
+
+            self.x = WIDTH//2
+            self.y = HEIGHT//2
+
+            self.x_velocity = BALL_VELOCITY
+            self.y_velocity = BALL_VELOCITY
 
     def get_rect(self):
         return pygame.Rect(self.x - self.radius, self.y - self.radius, self.radius*2, self.radius*2)
@@ -67,7 +74,7 @@ class Paddle:
         self.y = y
         self.width = width
         self.height = height
-        self.velocity = 3
+        self.velocity = 4
 
     def draw(self, win):
 
