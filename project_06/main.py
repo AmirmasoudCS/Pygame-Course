@@ -47,6 +47,9 @@ class Ball:
 
         if self.y + self.radius >= HEIGHT:
             self.y_velocity *= -1
+
+    def get_rect(self):
+        return pygame.Rect(self.x - self.radius, self.y - self.radius, self.radius*2, self.radius*2)
 class Paddle:
 
     COLOR = WHITE
