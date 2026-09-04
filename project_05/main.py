@@ -7,8 +7,10 @@ from project_05.checkers.constants import (
     SQUARE_SIZE,
     RED,
     FINISH,
+    WHITE,
 )
 from project_05.checkers.game import Game
+from project_05.minimax.algorithm import minimax
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Checkers")
@@ -40,8 +42,11 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 row, col = get_row_col_from_mouse(pos)
-                #if game.turn == RED:
-                game.select(row, col)
+                if game.turn == RED:
+                    game.select(row, col)
+                else:
+                    value, new_board = minimax(game.get_board(), 3, WHITE, game)
+                    game.ai_move(new_board)
 
         if winner is None:
             winner = game.winner()
