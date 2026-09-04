@@ -71,7 +71,7 @@ def draw(win, l_paddle, r_paddle, ball):
 
     l_paddle.draw(win)
     r_paddle.draw(win)
-    ball.draw()
+    ball.draw(win)
 
     pygame.display.update()
 
