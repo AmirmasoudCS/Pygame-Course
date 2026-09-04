@@ -13,6 +13,9 @@ WIDTH, HEIGHT = 700, 500
 
 PADDLE_WIDTH, PADDLE_HEIGHT = 10, 70
 
+DASH_WIDTH, DASH_HEIGHT = 4, 10
+DASH_GAP = 10
+
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Pong")
 
@@ -42,6 +45,9 @@ class Paddle:
 def draw(win, l_paddle, r_paddle):
 
     win.fill(BLACK)
+
+    for i in range(0, HEIGHT, DASH_HEIGHT + DASH_GAP):
+        pygame.draw.rect(win, BLACK, (WIDTH//2-DASH_WIDTH, i, DASH_WIDTH, DASH_HEIGHT))
 
     l_paddle.draw(win)
     r_paddle.draw(win)
