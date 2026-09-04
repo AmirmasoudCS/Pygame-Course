@@ -30,9 +30,9 @@ class Board:
         if row == ROWS - 1 or row == 0:
             piece.make_king()
             if piece.color == WHITE:
-                white_kings += 1
+                self.white_kings += 1
             elif piece.color == RED:
-                red_kings += 1
+                self.red_kings += 1
 
     def get_piece(self, row, col):
         return self.board[row][col]
