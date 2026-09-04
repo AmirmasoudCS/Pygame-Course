@@ -69,6 +69,9 @@ class Paddle:
         if down and self.y + self.velocity + self.height < HEIGHT:
             self.y += self.velocity
 
+    def get_rect(self):
+        return pygame.Rect(self.x, self.y, self.width, self.height)
+
 def draw(win, l_paddle, r_paddle, ball):
 
     win.fill(BLACK)
