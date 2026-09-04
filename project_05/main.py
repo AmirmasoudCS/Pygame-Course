@@ -25,7 +25,7 @@ def main():
 
     winner = None
 
-    pygame.mixer.music.set_volume(0.3)
+    pygame.mixer.music.set_volume(0.08)
     pygame.mixer.music.play(loops=-1)
 
     while run:
