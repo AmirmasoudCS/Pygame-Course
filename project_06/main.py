@@ -14,13 +14,23 @@ WIDTH, HEIGHT = 700, 500
 
 PADDLE_WIDTH, PADDLE_HEIGHT = 10, 70
 
+BALL_RADIUS = 7
+BALL_VELOCITY = 4
+
 DASH_WIDTH, DASH_HEIGHT = 4, 10
 DASH_GAP = 10
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Pong")
 
+class Ball:
 
+    def __init__(self, x=WIDTH//2-BALL_RADIUS//2, y=HEIGHT//2-BALL_RADIUS//2, radius=BALL_RADIUS, velocity=BALL_VELOCITY):
+        self.x = x
+        self.y = y
+        self.radius = radius
+        self.x_velocity = velocity
+        self.y_velocity = velocity
 class Paddle:
 
     COLOR = WHITE
