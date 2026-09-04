@@ -2,6 +2,7 @@ import pygame
 import time
 
 pygame.init()
+pygame.font.init()
 
 
 BLACK = (0, 0, 0)
@@ -9,6 +10,7 @@ WHITE = (255, 255, 255)
 
 FPS = 60
 
+FONT = pygame.font.SysFont("comicsans", 50)
 
 WIDTH, HEIGHT = 700, 500
 
@@ -27,7 +29,7 @@ class Ball:
 
     COLOR = WHITE
 
-    def __init__(self, x=WIDTH//2-BALL_RADIUS//2, y=HEIGHT//2-BALL_RADIUS//2, radius=BALL_RADIUS, velocity=BALL_VELOCITY):
+    def __init__(self, x=WIDTH//2, y=HEIGHT//2, radius=BALL_RADIUS, velocity=BALL_VELOCITY):
         self.x = x
         self.y = y
         self.radius = radius
@@ -54,13 +56,13 @@ class Ball:
         if rect.colliderect(right_paddle.get_rect()):
             self.x_velocity *= -1
 
-        def reset(self):
+    def reset(self):
 
-            self.x = WIDTH//2
-            self.y = HEIGHT//2
+        self.x = WIDTH//2
+        self.y = HEIGHT//2
 
-            self.x_velocity = BALL_VELOCITY
-            self.y_velocity = BALL_VELOCITY
+        self.x_velocity = BALL_VELOCITY
+        self.y_velocity = BALL_VELOCITY
 
     def get_rect(self):
         return pygame.Rect(self.x - self.radius, self.y - self.radius, self.radius*2, self.radius*2)
@@ -89,7 +91,7 @@ class Paddle:
     def get_rect(self):
         return pygame.Rect(self.x, self.y, self.width, self.height)
 
-def draw(win, l_paddle, r_paddle, ball):
+def draw(win, l_paddle, r_paddle, ball, left_score, right_score):
 
     win.fill(BLACK)
 
@@ -99,6 +101,12 @@ def draw(win, l_paddle, r_paddle, ball):
     l_paddle.draw(win)
     r_paddle.draw(win)
     ball.draw(win)
+
+    left_score_text = FONT.render(str(left_score), 1, WHITE)
+    right_score_text = FONT.render(str(right_score), 1, WHITE)
+
+    win.blit(left_score_text, (WIDTH//4 - left_score_text.get_width()//2, 20))
+    win.blit(right_score_text, (WIDTH*3//4 - right_score_text.get_width()//2, 20))
 
     pygame.display.update()
 
@@ -115,13 +123,24 @@ def main():
 
     ball = Ball()
 
+    left_score = 0
+    right_score = 0
+
     while run:
 
         clock.tick(FPS)
 
         ball.move(left_paddle, right_paddle)
 
-        draw(WIN, left_paddle, right_paddle, ball)
+        if ball.x - ball.radius <= 0:
+            right_score += 1
+            ball.reset()
+
+        if ball.x + ball.radius >= WIDTH:
+            left_score += 1
+            ball.reset()
+
+        draw(WIN, left_paddle, right_paddle, ball, left_score, right_score)
 
 
         for event in pygame.event.get():
