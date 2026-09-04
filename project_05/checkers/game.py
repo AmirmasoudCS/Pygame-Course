@@ -30,10 +30,10 @@ class Game:
 
     def select(self, row, col):
         if self.selected:
-            result = self.move(row, col)
+            result = self._move(row, col)
             if not result:
                 self.selected = None
-                self.selecte(row, col)
+                self.select(row, col)
         else:
             piece = self.board.get_piece(row, col)
             if piece != 0 and piece.color == self.turn:
