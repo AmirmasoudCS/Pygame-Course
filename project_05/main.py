@@ -6,7 +6,6 @@ from project_05.checkers.constants import (
     FPS,
     SQUARE_SIZE
 )
-from project_05.checkers.board import Board
 from project_05.checkers.game import Game
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
