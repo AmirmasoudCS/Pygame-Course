@@ -21,7 +21,7 @@ def main():
 
     run = True
     clock = pygame.time.Clock()
-    game = Game()
+    game = Game(WIN)
 
     while run:
 
