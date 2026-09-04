@@ -38,8 +38,15 @@ class Ball:
         pygame.draw.circle(win, self.COLOR, (self.x, self.y), self.radius)
 
     def move(self):
+
         self.x += self.x_velocity
         self.y += self.y_velocity
+
+        if self.y - self.radius <= 0:
+            self.y_velocity *= -1
+
+        if self.y + self.radius >= HEIGHT:
+            self.y_velocity *= -1
 class Paddle:
 
     COLOR = WHITE
