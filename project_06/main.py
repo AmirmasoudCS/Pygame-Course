@@ -62,7 +62,7 @@ class Paddle:
         if down and self.y + self.velocity + self.height < HEIGHT:
             self.y += self.velocity
 
-def draw(win, l_paddle, r_paddle):
+def draw(win, l_paddle, r_paddle, ball):
 
     win.fill(BLACK)
 
@@ -71,6 +71,7 @@ def draw(win, l_paddle, r_paddle):
 
     l_paddle.draw(win)
     r_paddle.draw(win)
+    ball.draw()
 
     pygame.display.update()
 
@@ -85,12 +86,15 @@ def main():
     left_paddle = Paddle(0, HEIGHT//2 - PADDLE_HEIGHT//2)
     right_paddle = Paddle(WIDTH - PADDLE_WIDTH, HEIGHT//2 - PADDLE_HEIGHT//2)
 
+    ball = Ball()
 
     while run:
 
         clock.tick(FPS)
 
-        draw(WIN, left_paddle, right_paddle)
+        ball.move()
+
+        draw(WIN, left_paddle, right_paddle, ball)
 
 
         for event in pygame.event.get():
