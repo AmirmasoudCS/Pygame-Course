@@ -10,6 +10,13 @@ WIDTH, HEIGHT = 700, 500
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Pong")
 
+class Paddle:
+    def __init__(self, x, y, width, height):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+
 def draw(win):
     win.blit(BLACK)
 
@@ -23,7 +30,7 @@ def main():
     while run:
         clock.tick(FPS)
         draw(WIN)
-        
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
