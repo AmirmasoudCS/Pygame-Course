@@ -3,6 +3,8 @@ from project_05.checkers.board import Board
 from project_05.checkers.constants import (
     RED,
     WHITE,
+    BLUE,
+    SQUARE_SIZE,
 )
 
 class Game:
@@ -47,6 +49,11 @@ class Game:
         else:
             return False
         return True
+
+    def draw_valid_moves(self, moves):
+        for move in moves:
+            row, col = moves
+            pygame.draw.circle(self.win, BLUE, (row * SQUARE_SIZE - SQUARE_SIZE // 2, col * SQUARE_SIZE - SQUARE_SIZE // 2), 15)
 
     def change_turn(self):
         if self.turn == RED:
