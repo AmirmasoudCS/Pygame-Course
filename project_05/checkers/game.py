@@ -16,11 +16,11 @@ class Game:
 
         pygame.display.update()
 
-    def init(self):
+    def _init(self):
         self.selected = None
         self.board = Board()
         self.turn = RED
         self.valid_moves = {}
 
     def reset(self):
-        self.init()
+        self._init()
