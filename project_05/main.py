@@ -6,6 +6,9 @@ from project_05.checkers.constants import (
     FPS,
     SQUARE_SIZE,
     RED,
+    DARK_OVERLAY,
+    FONT,
+    WHITE
 )
 from project_05.checkers.game import Game
 
@@ -23,12 +26,11 @@ def main():
     clock = pygame.time.Clock()
     game = Game(WIN)
 
+    winner = None
+
     while run:
 
         clock.tick(FPS)
-
-        if game.board.winner() != None:
-            print(f"{game.board.winner()} Wins!")
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -39,6 +41,24 @@ def main():
                 row, col = get_row_col_from_mouse(pos)
                 if game.turn == RED:
                     game.select(row, col)
+
+        if winner is None:
+            winner = game.board.winner()
+        if winner is None:
+            game.update()
+
+        if winner is not None:
+            overlay = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
+            overlay.fill(DARK_OVERLAY)
+            WIN.blit(overlay, (0, 0))
+            if winner == RED:
+                winner_color = RED
+            else:
+                winner_color = WHITE
+            text = FONT.render(f"{winner} Wins!", True, winner_color)
+            text_rect = text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+            WIN.blit(text, text_rect)
+
 
         game.update()
         
