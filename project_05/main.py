@@ -4,7 +4,8 @@ from project_05.checkers.constants import (
     WIDTH,
     HEIGHT,
     FPS,
-    SQUARE_SIZE
+    SQUARE_SIZE,
+    RED,
 )
 from project_05.checkers.game import Game
 
@@ -33,7 +34,8 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 row, col = get_row_col_from_mouse(pos)
-                piece = game.board.get_piece(row, col)
+                if game.turn == RED:
+                    game.select(row, col)
 
         game.update()
         
