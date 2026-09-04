@@ -6,6 +6,7 @@ from project_05.checkers.constants import (
     RED,
     WHITE,
     SQUARE_SIZE,
+    KING,
 )
 from project_05.checkers.piece import Piece
 
@@ -29,6 +30,7 @@ class Board:
 
         if row == ROWS - 1 or row == 0:
             piece.make_king()
+            KING.play()
             if piece.color == WHITE:
                 self.white_kings += 1
             elif piece.color == RED:

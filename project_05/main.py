@@ -6,6 +6,7 @@ from project_05.checkers.constants import (
     FPS,
     SQUARE_SIZE,
     RED,
+    FINISH,
 )
 from project_05.checkers.game import Game
 
@@ -48,6 +49,8 @@ def main():
             game.update()
         else:
             game.draw_winner(winner)
+            pygame.mixer.music.stop()
+            FINISH.play()
         
     pygame.quit()
     
