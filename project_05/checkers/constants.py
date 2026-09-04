@@ -22,3 +22,5 @@ CROWN = pygame.transform.scale(pygame.image.load("./project_05/assets/crown.png"
 pygame.mixer.music.load("./project_05/assets/sounds/bg_music.mp3")
 MOVE_SOUND = pygame.mixer.Sound("./project_05/assets/sounds/move.wav")
 CAPTURE_SOUND = pygame.mixer.Sound("./project_05/assets/sounds/piece_capturing.mp3")
+KING = pygame.mixer.Sound("./project_05/assets/sounds/king.wav")
+FINISH = pygame.mixer.Sound("./project_05/assets/sounds/finish.wav") 
