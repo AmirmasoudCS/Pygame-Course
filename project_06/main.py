@@ -2,13 +2,18 @@ import pygame
 pygame.init()
 import time
 
-
+BLACK = (0, 0, 0)
 FPS = 60
 
 WIDTH, HEIGHT = 700, 500
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Pong")
+
+def draw(win):
+    win.blit(BLACK)
+
+    pygame.display.update()
 
 def main():
 
