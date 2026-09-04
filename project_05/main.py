@@ -7,6 +7,7 @@ from project_05.checkers.constants import (
     SQUARE_SIZE
 )
 from project_05.checkers.board import Board
+from project_05.checkers.game import Game
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Checkers")
@@ -20,7 +21,7 @@ def main():
 
     run = True
     clock = pygame.time.Clock()
-    board = Board()
+    game = Game()
 
     while run:
 
@@ -33,12 +34,10 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 row, col = get_row_col_from_mouse(pos)
-                piece = board.get_piece(row, col)
+                piece = game.board.get_piece(row, col)
 
-        board.draw(WIN)
-
-        pygame.display.update()
-
+        game.update()
+        
     pygame.quit()
     
 if __name__ == "__main__":
