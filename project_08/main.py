@@ -212,6 +212,7 @@ def main(window):
     background, bg_image = get_background("Purple.png")
     player = Player(100, 100, 50, 50)
     floor = [Block(i * block_size, HEIGHT-block_size, block_size) for i in range(-WIDTH // block_size, WIDTH*2 // block_size)]
+    objects = [*floor, Block(0, HEIGHT - block_size*2,block_size)]
     offset_x = 0
     scroll_area_width = 200
 
@@ -226,9 +227,9 @@ def main(window):
 
 
         player.loop(FPS)
-        handle_movement(player, floor)
+        handle_movement(player, objects)
 
-        draw(window, background, bg_image, player, floor, offset_x)
+        draw(window, background, bg_image, player, objects, offset_x)
 
         if ((player.rect.right - offset_x >= WIDTH - scroll_area_width)and (player.x_vel > 0)) or ((player.rect.left - offset_x <= scroll_area_width) and (player.x_vel < 0)):
             offset_x += player.x_vel
