@@ -45,7 +45,7 @@ class Tile:
         self.y = row * RECT_HEIGHT
 
     def get_color(self):
-        pass
+        return self.COLORS[int(math.log2(self.value)) - 1]
 
     def draw(self, win):
         pass
