@@ -71,9 +71,11 @@ def draw(window, background, bg_image, player):
 
 def handle_movement(player):
     keys = pygame.key.get_pressed()
-    if keys[pygame.k_a] and player.x - PLAYER_VEL > 0:
+
+    player.x_vel = 0
+    if keys[pygame.K_a] and player.rect.x - PLAYER_VEL > 0:
         player.move_left(PLAYER_VEL)
-    if keys[pygame.K_d] and player.x + PLAYER_VEL < WIDTH - player.rect.width:
+    if keys[pygame.K_d] and player.rect.x + PLAYER_VEL < WIDTH - player.rect.width:
         player.move_right(PLAYER_VEL)
 
 def main(window):
@@ -88,6 +90,10 @@ def main(window):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+
+
+        player.loop(FPS)
+        handle_movement(player)
 
         draw(window, background, bg_image, player)
 
