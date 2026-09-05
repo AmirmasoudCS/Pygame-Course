@@ -48,6 +48,8 @@ class Player(pygame.sprite.Sprite):
 
     GRAVITY = 1
 
+    SPRITES = load_sprite_sheets("MainCharacters", "PinkMan", 32, 32, True)
+
     def __init__(self, x, y, width, height):
         self.rect = pygame.Rect(x, y, width, height)
         self.x_vel = 0
