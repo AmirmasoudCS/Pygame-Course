@@ -126,8 +126,8 @@ class Player(pygame.sprite.Sprite):
         self.count = 0
         self.y_vel *= -1
 
-    def draw(self, win):
-        win.blit(self.sprite, (self.rect.x, self.rect.y))
+    def draw(self, win, offset_x):
+        win.blit(self.sprite, (self.rect.x - offset_x, self.rect.y))
 
 
 class Object(pygame.sprite.Sprite):
@@ -139,8 +139,8 @@ class Object(pygame.sprite.Sprite):
         self.height = height
         self.name = name
 
-    def draw(self, win):
-        win.blit(self.image, (self.rect.x, self.rect.y))
+    def draw(self, win, offset_x):
+        win.blit(self.image, (self.rect.x - offset_x, self.rect.y))
 
 def load_block(size):
     path = join("project_08", "assets", "Terrain", "Terrain.png")
@@ -167,14 +167,14 @@ def get_background(name):
             tiles.append(pos)
     return tiles, image
 
-def draw(window, background, bg_image, player, objects):
+def draw(window, background, bg_image, player, objects, offset_x):
     for tile in background:
         window.blit(bg_image, tuple(tile))
 
     for obj in objects:
-        obj.draw(window)
+        obj.draw(window, offset_x)
 
-    player.draw(window)
+    player.draw(window, offset_x)
 
     pygame.display.update()
 
@@ -196,9 +196,9 @@ def handle_movement(player, objects):
     keys = pygame.key.get_pressed()
 
     player.x_vel = 0
-    if keys[pygame.K_a] and player.rect.x - PLAYER_VEL > 0:
+    if keys[pygame.K_a]:
         player.move_left(PLAYER_VEL)
-    if keys[pygame.K_d] and player.rect.x + PLAYER_VEL < WIDTH - player.rect.width:
+    if keys[pygame.K_d]:
         player.move_right(PLAYER_VEL)
 
     handle_vertical_collision(player, objects, player.y_vel)
@@ -212,6 +212,8 @@ def main(window):
     background, bg_image = get_background("Purple.png")
     player = Player(100, 100, 50, 50)
     floor = [Block(i * block_size, HEIGHT-block_size, block_size) for i in range(-WIDTH // block_size, WIDTH*2 // block_size)]
+    offset_x = 0
+    scroll_area_width = 200
 
     while run:
         clock.tick(FPS)
@@ -226,7 +228,10 @@ def main(window):
         player.loop(FPS)
         handle_movement(player, floor)
 
-        draw(window, background, bg_image, player, floor)
+        draw(window, background, bg_image, player, floor, offset_x)
+
+        if ((player.rect.right - offset_x >= WIDTH - scroll_area_width)and (player.x_vel > 0)) or ((player.rect.left - offset_x <= scroll_area_width) and (player.x_vel < 0)):
+            offset_x += player.x_vel
 
     pygame.quit()
     quit()
