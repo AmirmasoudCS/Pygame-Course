@@ -11,7 +11,7 @@ FPS = 60
 WIDTH, HEIGHT = 800, 800
 ROWS, COLS = 4, 4
 
-RECT_HEIGHT, RECT_WIDTH = HEIGHT // ROWS, WIDTH // 2
+RECT_HEIGHT, RECT_WIDTH = HEIGHT // ROWS, WIDTH // COLS
 
 OUTLINE_COLOR = (187, 173, 160)
 OUTLINE_THICKNESS = 10
@@ -26,6 +26,13 @@ FONT = pygame.font.SysFont("comicsans", 60, bold=True)
 MOVE_VEL = 20 
 
 def draw_grid(window):
+    for row in range(1, ROWS):
+        y = row * RECT_HEIGHT
+        pygame.draw.line(window, OUTLINE_COLOR, (0, y), (WIDTH, y), OUTLINE_THICKNESS)
+    for col in range(1, COLS):
+        x = col * RECT_WIDTH
+        pygame.draw.line(window, OUTLINE_COLOR, (x, 0), (x, HEIGHT), OUTLINE_THICKNESS)
+
     pygame.draw.rect(window, OUTLINE_COLOR, (0, 0, WIDTH, HEIGHT), OUTLINE_THICKNESS)
 
 def draw(window):
