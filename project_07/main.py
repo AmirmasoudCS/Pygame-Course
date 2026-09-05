@@ -40,13 +40,12 @@ def main(window):
 
         clock.tick(FPS)
 
-        draw(window)
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
                 break
 
+        draw(window)
 
     pygame.quit()
 
