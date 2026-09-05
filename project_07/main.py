@@ -103,7 +103,7 @@ def main(window):
     run = True
     clock = pygame.time.Clock()
 
-    tiles = {"00": Tile(2, 0, 0)}
+    tiles = generate_tiles()
 
     while run:
 
