@@ -104,7 +104,7 @@ class Player(pygame.sprite.Sprite):
         elif self.y_vel > 0:
             sprite_sheet = "fall"
         
-        if self.x_vel != 0:
+        elif self.x_vel != 0:
             sprite_sheet = "run"
         sprite_sheet_name = sprite_sheet + "_" + self.direction
         sprites = self.SPRITES[sprite_sheet_name]
