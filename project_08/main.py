@@ -8,9 +8,6 @@ pygame.init()
 
 pygame.display.set_caption("Platformer")
 
-WHITE = (255, 255, 255)
-BG_COLOR = WHITE
-
 WIDTH, HEIGHT = 1000, 800
 
 FPS = 60
@@ -18,6 +15,18 @@ FPS = 60
 PLAYER_VEL = 5
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+
+class Player(pygame.sprite.Sprite):
+
+    COLOR = (255, 0, 0)
+
+    def __init__(self, x, y, width, height):
+        self.rect = pygame.rect(x, y, width, height)
+        self.x_vel = 0
+        self.y_vel = 0
+        self.mask = None
+
+
 
 def get_background(name):
     image = pygame.image.load(join("project_08", "assets", "Background", name))
