@@ -19,7 +19,7 @@ PLAYER_VEL = 5
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 
-def main():
+def main(window):
 
     run = True
     clock = pygame.time.Clock()
@@ -35,4 +35,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(WIN)
