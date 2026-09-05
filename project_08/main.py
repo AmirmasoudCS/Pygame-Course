@@ -52,7 +52,7 @@ class Player(pygame.sprite.Sprite):
     ANIMATION_DELAY = 5
 
     def __init__(self, x, y, width, height):
-        super().init()
+        super().__init__()
         self.rect = pygame.Rect(x, y, width, height)
         self.x_vel = 0
         self.y_vel = 0
@@ -105,7 +105,7 @@ class Player(pygame.sprite.Sprite):
 
 class Object(pygame.sprite.Sprite):
     def __init__(self, x, y, width, height, name=None):
-        super().init()
+        super().__init__()
         self.rect = pygame.Rect(x, y, width, height)
         self.image = pygame.surface((width, height), pygame.SRCALPHA)
         self.width = width
@@ -124,7 +124,7 @@ def load_block(size):
     return pygame.transform.scale2x(surface)
 class Block(Object):
     def __init__(self, x, y, size):
-        super().init(x, y, size, size)
+        super().__init__(x, y, size, size)
         block = load_block(size)
         self.image.blit(block, (0, 0))
         self.mask = pygame.mask.from_surface(self.image)
