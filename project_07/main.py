@@ -45,7 +45,8 @@ class Tile:
         self.y = row * RECT_HEIGHT
 
     def get_color(self):
-        return self.COLORS[int(math.log2(self.val)) - 1]
+        color_index = int(math.log2(self.val)) - 1
+        return self.COLORS[min(color_index, len(self.COLORS) - 1)]
 
     def draw(self, win):
         color = self.get_color()
@@ -99,10 +100,11 @@ def get_random_position(tiles):
 def move_tiles(window, tiles, clock, direction):
     updated = True
     blocks = set()
+    moved = False
 
     if direction == "left":
         sort_function = lambda x: x.col
-        reversed = False
+        reverse = False
         delta = (-MOVE_VEL, 0)
         boundary_check = lambda tile: tile.col == 0
         get_next_tile = lambda tile: tiles.get(f"{tile.row}{tile.col-1}")
@@ -112,7 +114,7 @@ def move_tiles(window, tiles, clock, direction):
 
     elif direction == "right":
         sort_function = lambda x: x.col
-        reversed = True
+        reverse = True
         delta = (MOVE_VEL, 0)
         boundary_check = lambda tile: tile.col == COLS - 1
         get_next_tile = lambda tile: tiles.get(f"{tile.row}{tile.col+1}")
@@ -122,43 +124,50 @@ def move_tiles(window, tiles, clock, direction):
 
     elif direction == "up":
         sort_function = lambda x: x.row
-        reversed = False
+        reverse = False
         delta = (0, -MOVE_VEL)
         boundary_check = lambda tile: tile.row == 0
         get_next_tile = lambda tile: tiles.get(f"{tile.row-1}{tile.col}")
         merge_check = lambda tile, next_tile: tile.y > next_tile.y + MOVE_VEL
-        move_check = lambda tile, next_tile: tile.y > next_tile.x + RECT_HEIGHT + MOVE_VEL
+        move_check = lambda tile, next_tile: tile.y > next_tile.y + RECT_HEIGHT + MOVE_VEL
         ceil = True
 
     elif direction == "down":
         sort_function = lambda x: x.row
-        reversed = True
+        reverse = True
         delta = (0, MOVE_VEL)
         boundary_check = lambda tile: tile.row == ROWS - 1
         get_next_tile = lambda tile: tiles.get(f"{tile.row+1}{tile.col}")
         merge_check = lambda tile, next_tile: tile.y < next_tile.y - MOVE_VEL
-        move_check = lambda tile, next_tile: tile.y < next_tile.x - RECT_HEIGHT - MOVE_VEL
+        move_check = lambda tile, next_tile: tile.y < next_tile.y - RECT_HEIGHT - MOVE_VEL
         ceil = False
+
+    else:
+        return "no_move"
 
     while updated:
         clock.tick(FPS)
         updated = False
-        sorted_tiles = sorted(tiles.values(), key=sort_function, reverse=reversed)
+        sorted_tiles = sorted(tiles.values(), key=sort_function, reverse=reverse)
         for i, tile in enumerate(sorted_tiles):
             if boundary_check(tile):
                 continue
             next_tile = get_next_tile(tile)
             if not next_tile:
                 tile.move(delta)
+                moved = True
             elif tile.val == next_tile.val and tile not in blocks and next_tile not in blocks:
                 if merge_check(tile, next_tile):
                     tile.move(delta)
+                    moved = True
                 else:
                     next_tile.val *= 2
                     sorted_tiles.pop(i)
                     blocks.add(next_tile)
+                    moved = True
             elif move_check(tile, next_tile):
                 tile.move(delta)
+                moved = True
             else:
                 continue
 
@@ -166,15 +175,43 @@ def move_tiles(window, tiles, clock, direction):
             updated = True
 
         update_tiles(window, tiles, sorted_tiles)
+
+    if not moved:
+        return "no_move"
+
     return end_move(tiles)
 
 def end_move(tiles):
     if len(tiles) == 16:
-        return "lost"
+        if not can_move(tiles):
+            return "lost"
+
+        return "continue"
+
     row, col = get_random_position(tiles)
     tiles[f"{row}{col}"] = Tile(random.choice([2, 4]), row, col)
+
     return "continue"
 
+def can_move(tiles):
+    for row in range(ROWS):
+        for col in range(COLS):
+            tile = tiles.get(f"{row}{col}")
+
+            if not tile:
+                return True
+
+            if col < COLS - 1:
+                next_tile = tiles.get(f"{row}{col + 1}")
+                if next_tile and tile.val == next_tile.val:
+                    return True
+
+            if row < ROWS - 1:
+                next_tile = tiles.get(f"{row + 1}{col}")
+                if next_tile and tile.val == next_tile.val:
+                    return True
+
+    return False
 
 def update_tiles(window, tiles, sorted_tiles):
     tiles.clear()
@@ -197,6 +234,7 @@ def main(window):
     clock = pygame.time.Clock()
 
     tiles = generate_tiles()
+    game_over = False
 
     while run:
 
@@ -207,15 +245,18 @@ def main(window):
                 run = False
                 break
 
-            if event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN and not game_over:
                 if event.key == pygame.K_a:
-                    move_tiles(window, tiles, clock, "left")
+                    result = move_tiles(window, tiles, clock, "left")
                 if event.key == pygame.K_d:
-                    move_tiles(window, tiles, clock, "right")
+                    result = move_tiles(window, tiles, clock, "right")
                 if event.key == pygame.K_w:
-                    move_tiles(window, tiles, clock, "up")
+                    result = move_tiles(window, tiles, clock, "up")
                 if event.key == pygame.K_s:
-                    move_tiles(window, tiles, clock, "down")
+                    result = move_tiles(window, tiles, clock, "down")
+
+                if result == "lost":
+                    game_over = True
             
         draw(window, tiles)
 
