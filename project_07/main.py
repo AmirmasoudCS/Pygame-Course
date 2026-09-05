@@ -123,6 +123,13 @@ def move_tiles(window, tiles, clock, direction):
             next_tile = get_next_tile(tile)
             if not next_tile:
                 tile.move(delta)
+            elif tile.val == next_tile.val and tile not in blocks and next_tile not in blocks:
+                if merge_check(tile, next_tile):
+                    tile.move(delta)
+                else:
+                    next_tile.val *= 2
+                    sorted_tiles.pop(i)
+                    blocks.add(next_tile)
 
 
 def generate_tiles():
