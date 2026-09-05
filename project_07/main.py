@@ -130,7 +130,10 @@ def move_tiles(window, tiles, clock, direction):
                     next_tile.val *= 2
                     sorted_tiles.pop(i)
                     blocks.add(next_tile)
-
+            elif move_check(tile, next_tile):
+                tile.move(delta)
+            else:
+                continue
 
 def generate_tiles():
     tiles = {}
