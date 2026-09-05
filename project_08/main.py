@@ -69,6 +69,13 @@ def draw(window, background, bg_image, player):
 
     pygame.display.update()
 
+def handle_movement(player):
+    keys = pygame.key.get_pressed()
+    if keys[pygame.k_a] and player.x - PLAYER_VEL > 0:
+        player.move_left(PLAYER_VEL)
+    if keys[pygame.K_d] and player.x + PLAYER_VEL < WIDTH - player.rect.width:
+        player.move_right(PLAYER_VEL)
+
 def main(window):
 
     run = True
