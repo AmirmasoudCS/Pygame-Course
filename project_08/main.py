@@ -208,8 +208,8 @@ def handle_movement(player, objects):
     keys = pygame.key.get_pressed()
 
     player.x_vel = 0
-    collide_left = collide(player, objects, -PLAYER_VEL)
-    collide_right = collide(player, objects, PLAYER_VEL)
+    collide_left = collide(player, objects, -PLAYER_VEL * 2)
+    collide_right = collide(player, objects, PLAYER_VEL * 2)
     if keys[pygame.K_a] and not collide_left:
         player.move_left(PLAYER_VEL)
     if keys[pygame.K_d] and not collide_right:
@@ -226,7 +226,7 @@ def main(window):
     background, bg_image = get_background("Purple.png")
     player = Player(100, 100, 50, 50)
     floor = [Block(i * block_size, HEIGHT-block_size, block_size) for i in range(-WIDTH // block_size, WIDTH*2 // block_size)]
-    objects = [*floor, Block(0, HEIGHT - block_size*2,block_size), Block(block_size*3, HEIGHT*4 - block_size*2,block_size)]
+    objects = [*floor, Block(0, HEIGHT - block_size*2,block_size), Block(block_size*3, HEIGHT//4 - block_size*-3,block_size)]
     offset_x = 0
     scroll_area_width = 200
 
