@@ -56,7 +56,8 @@ class Tile:
 
 
     def move(self, delta):
-        pass
+        self.x += delta[0]
+        self.y += delta[1]
 
     def set_position(self):
         pass
