@@ -140,9 +140,12 @@ def get_background(name):
             tiles.append(pos)
     return tiles, image
 
-def draw(window, background, bg_image, player):
+def draw(window, background, bg_image, player, objects):
     for tile in background:
         window.blit(bg_image, tuple(tile))
+
+    for obj in objects:
+        obj.draw(window)
 
     player.draw(window)
 
@@ -159,10 +162,14 @@ def handle_movement(player):
 
 def main(window):
 
+    block_size = 96
+
     run = True
     clock = pygame.time.Clock()
     background, bg_image = get_background("Purple.png")
     player = Player(100, 100, 50, 50)
+
+    blocks = [Block(0, HEIGHT - block_size, block_size)]
 
     while run:
         clock.tick(FPS)
@@ -174,7 +181,7 @@ def main(window):
         player.loop(FPS)
         handle_movement(player)
 
-        draw(window, background, bg_image, player)
+        draw(window, background, bg_image, player, blocks)
 
     pygame.quit()
     quit()
