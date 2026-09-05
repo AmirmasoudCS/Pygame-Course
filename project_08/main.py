@@ -16,6 +16,9 @@ PLAYER_VEL = 5
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 
+def flip(sprites):
+    return [pygame.transform.flip(sprite, True, False) for sprite in sprites]
+
 class Player(pygame.sprite.Sprite):
 
     COLOR = (255, 0, 0)
