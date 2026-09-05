@@ -45,7 +45,7 @@ class Tile:
         self.y = row * RECT_HEIGHT
 
     def get_color(self):
-        return self.COLORS[int(math.log2(self.value)) - 1]
+        return self.COLORS[int(math.log2(self.val)) - 1]
 
     def draw(self, win):
         color = self.get_color()
@@ -82,10 +82,20 @@ def draw(window, tiles):
 
     pygame.display.update()
 
+def generate_tiles():
+    tiles = {}
+    for _ in range(2):
+        row, col = get_random_position(tiles)
+        tiles[f"{row}{col}"] = Tile(2, row, col)
+
+    return tiles
+
 def main(window):
 
     run = True
     clock = pygame.time.Clock()
+
+    tiles = {"00": Tile(2, 0, 0)}
 
     while run:
 
@@ -96,7 +106,7 @@ def main(window):
                 run = False
                 break
 
-        draw(window)
+        draw(window, tiles)
 
     pygame.quit()
 
