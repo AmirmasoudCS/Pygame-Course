@@ -25,6 +25,12 @@ FONT = pygame.font.SysFont("comicsans", 60, bold=True)
 
 MOVE_VEL = 20 
 
+def draw(window):
+
+    window.fill(BG_COLOR)
+
+    pygame.display.update()
+
 def main(window):
 
     run = True
