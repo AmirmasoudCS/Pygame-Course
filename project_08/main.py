@@ -49,6 +49,7 @@ class Player(pygame.sprite.Sprite):
     GRAVITY = 1
 
     SPRITES = load_sprite_sheets("MainCharacters", "PinkMan", 32, 32, True)
+    ANIMATION_DELAY = 5
 
     def __init__(self, x, y, width, height):
         self.rect = pygame.Rect(x, y, width, height)
@@ -80,9 +81,19 @@ class Player(pygame.sprite.Sprite):
         self.move(self.x_vel, self.y_vel)
 
         self.fall_count += 1
+        self.update_sprite()
+
+    def update_sprite(self):
+        sprite_sheet = "idle"
+        if self.x_vel != 0:
+            sprite_sheet = "run"
+        sprite_sheet_name = sprite_sheet + "_" + self.direction
+        sprites = self.SPRITES[sprite_sheet_name]
+        sprite_index = (self.animation_count // self.ANIMATION_DELAY) % len(sprites)
+        self.sprite = sprites[sprite_index]
+        self.animation_count += 1
 
     def draw(self, win):
-        self.sprite = self.SPRITES["idle_" + self.direction][0]
         win.blit(self.sprite, (self.rect.x, self.rect.y))
 
 
