@@ -82,6 +82,14 @@ def draw(window, tiles):
 
     pygame.display.update()
 
+def get_random_position(tiles):
+    row, col = None, None
+    while True:
+        row, col = random.randrange(0, ROWS), random.randrange(0, COLS)
+        if f"{row}{col}" not in tiles:
+            break
+    return row, col
+
 def generate_tiles():
     tiles = {}
     for _ in range(2):
