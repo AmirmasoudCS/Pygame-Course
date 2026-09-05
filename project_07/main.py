@@ -48,7 +48,12 @@ class Tile:
         return self.COLORS[int(math.log2(self.value)) - 1]
 
     def draw(self, win):
-        pass
+        color = self.get_color()
+        pygame.draw.rect(win, color, (self.x, self.y, RECT_WIDTH, RECT_HEIGHT))
+
+        text = FONT.render(str(self.val), 1, FONT_COLOR)
+        win.blit(text, (self.x + (RECT_WIDTH / 2 - text.get_width() / 2), self.y + (RECT_HEIGHT / 2 - text.get_height() / 2)))
+
 
     def move(self, delta):
         pass
@@ -66,9 +71,12 @@ def draw_grid(window):
 
     pygame.draw.rect(window, OUTLINE_COLOR, (0, 0, WIDTH, HEIGHT), OUTLINE_THICKNESS)
 
-def draw(window):
+def draw(window, tiles):
 
     window.fill(BG_COLOR)
+
+    for tile in tiles.values():
+        tile.draw(window)
 
     draw_grid(window)
 
