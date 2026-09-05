@@ -48,6 +48,7 @@ def main(window):
             if event.type == pygame.QUIT:
                 run = False
 
+        draw(window, background, bg_image)
 
     pygame.quit()
     quit()
