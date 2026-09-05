@@ -144,6 +144,15 @@ def move_tiles(window, tiles, clock, direction):
             updated = True
 
         update_tiles(window, tiles, sorted_tiles)
+    end_move(tiles)
+
+def end_move(tiles):
+    if len(tiles) == 16:
+        return "lost"
+    row, col = get_random_position(tiles)
+    tiles[f"{row}{col}"] = Tile(random.choice([2, 4]), row, col)
+    return "continue"
+
 
 def update_tiles(window, tiles, sorted_tiles):
     tiles.clear()
