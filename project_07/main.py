@@ -25,7 +25,7 @@ FONT = pygame.font.SysFont("comicsans", 60, bold=True)
 
 MOVE_VEL = 20 
 
-def main():
+def main(window):
 
     run = True
     clock = pygame.time.Clock()
@@ -43,4 +43,4 @@ def main():
     pygame.quit()
 
 if __name__ == "__main__":
-    main()
+    main(WIN)
