@@ -101,7 +101,7 @@ class Player(pygame.sprite.Sprite):
             elif self.jump_count == 2:
                 sprite_sheet = "double_jump"
 
-        elif self.y_vel > 0:
+        elif self.y_vel > self.GRAVITY * 2:
             sprite_sheet = "fall"
         
         elif self.x_vel != 0:
