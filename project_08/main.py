@@ -26,7 +26,7 @@ def load_sprite_sheets(dir1, dir2, width, height, direction=False):
     all_sprites = {}
 
     for image in images:
-        sprite_sheet = pygame.image.laod(join(path, image)).conver_alpha()
+        sprite_sheet = pygame.image.load(join(path, image)).convert_alpha()
 
         sprites = []
         for i in range(sprite_sheet.get_width() // width):
@@ -82,7 +82,8 @@ class Player(pygame.sprite.Sprite):
         self.fall_count += 1
 
     def draw(self, win):
-        pygame.draw.rect(win, self.COLOR, self.rect)
+        self.sprite = self.SPRITES["idle"][0]
+        win.blit(self.sprite, (self.rect.x, self.rect.y))
 
 
 def get_background(name):
