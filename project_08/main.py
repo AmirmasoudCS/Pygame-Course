@@ -112,6 +112,10 @@ class Object(pygame.sprite.Sprite):
         self.height = height
         self.name = name
 
+    def draw(self, win):
+        win.blit(self.image, (self.rect.x, self.rect.y))
+    
+
 def get_background(name):
     image = pygame.image.load(join("project_08", "assets", "Background", name))
     _, _, width, height = image.get_rect()
