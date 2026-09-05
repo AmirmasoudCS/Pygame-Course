@@ -25,9 +25,14 @@ FONT = pygame.font.SysFont("comicsans", 60, bold=True)
 
 MOVE_VEL = 20 
 
+def draw_grid(window):
+    pygame.draw.rect(window, OUTLINE_COLOR, (0, 0, WIDTH, HEIGHT), OUTLINE_THICKNESS)
+
 def draw(window):
 
     window.fill(BG_COLOR)
+
+    draw_grid(window)
 
     pygame.display.update()
 
