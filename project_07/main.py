@@ -131,7 +131,14 @@ def move_tiles(window, tiles, clock, direction):
         ceil = True
 
     elif direction == "down":
-        pass
+        sort_function = lambda x: x.row
+        reversed = True
+        delta = (0, MOVE_VEL)
+        boundary_check = lambda tile: tile.row == ROWS - 1
+        get_next_tile = lambda tile: tiles.get(f"{tile.row+1}{tile.col}")
+        merge_check = lambda tile, next_tile: tile.y < next_tile.y - MOVE_VEL
+        move_check = lambda tile, next_tile: tile.y < next_tile.x - RECT_HEIGHT - MOVE_VEL
+        ceil = False
 
     while updated:
         clock.tick(FPS)
