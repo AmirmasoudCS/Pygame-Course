@@ -140,7 +140,17 @@ def move_tiles(window, tiles, clock, direction):
             else:
                 continue
 
+            tile.set_position(ceil)
             updated = True
+
+        update_tiles(window, tiles, sorted_tiles)
+
+def update_tiles(window, tiles, sorted_tiles):
+    tiles.clear()
+    for tile in sorted_tiles:
+        tiles[f"{tile.row}{tile.col}"] = tile
+
+    draw(window, tiles)
 
 def generate_tiles():
     tiles = {}
