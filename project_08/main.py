@@ -18,3 +18,21 @@ FPS = 60
 PLAYER_VEL = 5
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+
+def main():
+
+    run = True
+    clock = pygame.time.Clock()
+
+    while run:
+        clock.tick(FPS)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+
+
+    pygame.quit()
+
+
+if __name__ == "__main__":
+    main()
