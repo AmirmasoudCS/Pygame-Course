@@ -112,7 +112,9 @@ def move_tiles(window, tiles, clock, direction):
     elif direction == "down":
         pass
 
-    
+    while updated:
+        clock.tick(FPS)
+        updated = False
 
 
 def generate_tiles():
