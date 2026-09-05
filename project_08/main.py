@@ -99,6 +99,15 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.sprite.get_rect(topleft=(self.rect.x, self.rect.y))
         self.mask = pygame.mask.from_surface(self.sprite) 
 
+    def landed(self):
+        self.fall_count = 0
+        self.y_vel = 0
+        self.jump_count = 0
+
+    def hit_head(self):
+        self.count = 0
+        self.y_vel *= -1
+
     def draw(self, win):
         win.blit(self.sprite, (self.rect.x, self.rect.y))
 
@@ -174,6 +183,8 @@ def handle_movement(player, objects):
     if keys[pygame.K_d] and player.rect.x + PLAYER_VEL < WIDTH - player.rect.width:
         player.move_right(PLAYER_VEL)
 
+    handle_vertical_collision(player, objects, player.y_vel)
+
 def main(window):
 
     block_size = 96
@@ -192,7 +203,7 @@ def main(window):
 
 
         player.loop(FPS)
-        handle_movement(player)
+        handle_movement(player, floor)
 
         draw(window, background, bg_image, player, floor)
 
