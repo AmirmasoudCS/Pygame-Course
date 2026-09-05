@@ -115,6 +115,13 @@ def move_tiles(window, tiles, clock, direction):
     while updated:
         clock.tick(FPS)
         updated = False
+        sorted_tiles = sorted(tiles.values(), key=sort_function, reverse=reversed)
+        for i, tile in enumerate(sorted_tiles):
+            if boundary_check(tile):
+                continue
+            next_tile = get_next_tile(tile)
+            if not next_tile:
+                tile.move(delta)
 
 
 def generate_tiles():
