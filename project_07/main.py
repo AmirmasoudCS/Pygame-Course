@@ -36,7 +36,14 @@ class Tile:
         (237, 204, 99),
         (236, 202, 80),
     ]
-    
+
+    def __init__(self, val, row, col):
+        self.val = val
+        self.row = row
+        self.col = col
+        self.x = col * RECT_WIDTH
+        self.y = row * RECT_HEIGHT
+        
 
 def draw_grid(window):
     for row in range(1, ROWS):
