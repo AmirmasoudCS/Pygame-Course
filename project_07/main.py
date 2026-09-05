@@ -135,6 +135,8 @@ def move_tiles(window, tiles, clock, direction):
             else:
                 continue
 
+            updated = True
+
 def generate_tiles():
     tiles = {}
     for _ in range(2):
