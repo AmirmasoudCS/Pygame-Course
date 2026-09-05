@@ -25,6 +25,19 @@ FONT = pygame.font.SysFont("comicsans", 60, bold=True)
 
 MOVE_VEL = 20 
 
+class Tile:
+    COLORS = [
+        (237, 229, 218),
+        (238, 225, 201),
+        (243, 178, 122),
+        (246, 150, 101),
+        (247, 124, 95),
+        (237, 208, 115),
+        (237, 204, 99),
+        (236, 202, 80),
+    ]
+    
+
 def draw_grid(window):
     for row in range(1, ROWS):
         y = row * RECT_HEIGHT
