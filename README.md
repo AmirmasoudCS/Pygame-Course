@@ -4,7 +4,7 @@ A collection of small game development projects built with Python and Pygame as 
 
 ## Mini-Projects
 
-* [☄️ Dogdge The Meteor](./project_01/README.md)
+* [☄️ Dodge The Meteor](./project_01/README.md)
 * [🚀 Space Battle Ship](./project_02/README.md)
 * [👾 Space Shooter](./project_03/README.md)
 * [🏎️ Racing Game](./project_04/README.md)
@@ -12,3 +12,6 @@ A collection of small game development projects built with Python and Pygame as 
 * [🏓 Pong](./project_06/README.md)
 * [🔢 2048](./project_07/README.md)
 * [⛰️ Platformer](./project_08/README.md)
+
+# License
+[MIT](./LICENSE)
