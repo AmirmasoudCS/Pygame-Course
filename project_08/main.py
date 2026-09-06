@@ -168,6 +168,14 @@ class Fire(Object):
         self.animation_count = 0
         self.animation_name = "off"
 
+    def on(self):
+        self.animation_name = "on"
+
+    def off(self):
+        self.animation_name = "off"
+
+    
+
 
 def get_background(name):
     image = pygame.image.load(join("project_08", "assets", "Background", name))
