@@ -258,7 +258,11 @@ def handle_movement(player, objects):
     if keys[pygame.K_d] and not collide_right:
         player.move_right(PLAYER_VEL)
 
-    handle_vertical_collision(player, objects, player.y_vel)
+    vertical_collide = handle_vertical_collision(player, objects, player.y_vel)
+    to_check = [collide_left, collide_right, *vertical_collide]
+    for obj in to_check:
+        if to_check and to_check.name == "fire":
+            player.hit()
 
 def main(window):
 
