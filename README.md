@@ -11,3 +11,4 @@ A collection of small game development projects built with Python and Pygame as 
 * [🔴⚪ Checkers](./project_05/README.md)
 * [🏓 Pong](./project_06/README.md)
 * [🔢 2048](./project_07/README.md)
+* [⛰️ Platformer](./project_08/README.md)
