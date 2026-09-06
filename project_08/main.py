@@ -62,9 +62,9 @@ class Player(pygame.sprite.Sprite):
         self.fall_count = 0
         self.jump_count = 0
         self.hit = False
-        self.hit_count 
+        self.hit_count = 0
 
-    def hit(self):
+    def make_hit(self):
         self.hit = True
         self.hit_count = 0
 
@@ -100,6 +100,7 @@ class Player(pygame.sprite.Sprite):
             self.hit_count += 1
         if self.hit_count > fps*2:
             self.hit = False
+            self.hit_count = 0
 
         self.fall_count += 1
         self.update_sprite()
@@ -231,7 +232,7 @@ def handle_vertical_collision(player, objects, dy):
             elif dy < 0:
                 player.rect.top = object.rect.bottom
                 player.hit_head()
-        collided_objects.append(object)
+            collided_objects.append(object)
 
     return collided_objects
 
@@ -261,8 +262,8 @@ def handle_movement(player, objects):
     vertical_collide = handle_vertical_collision(player, objects, player.y_vel)
     to_check = [collide_left, collide_right, *vertical_collide]
     for obj in to_check:
-        if to_check and to_check.name == "fire":
-            player.hit()
+        if obj and obj.name == "fire":
+            player.make_hit()
 
 def main(window):
 
