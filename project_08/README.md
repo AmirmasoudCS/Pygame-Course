@@ -24,7 +24,7 @@ The player controls a character through a platform-based level, using movement a
 
 * Player movement and double jumping
 
-* Animated character movement
+* Animated character
 
 * Platform and hazard collisions
 
@@ -34,17 +34,25 @@ The player controls a character through a platform-based level, using movement a
 
 <div align="center">
 
-<img src="assets/gameplay.png" width="800">
+<img src="assets/double_jump.png">
 
-<p><em>Platforming and movement.</em></p>
+<p><em>Using the double jump to navigate between platforms.</em></p>
 
 </div>
 
 <div align="center">
 
-<img src="assets/fire.png" width="800">
+<img src="assets/hit1.png">
 
-<p><em>Avoiding environmental hazards.</em></p>
+<p><em>Encountering a fire hazard.</em></p>
+
+</div>
+
+<div align="center">
+
+<img src="assets/hit2.png">
+
+<p><em>Player hit animation.</em></p>
 
 </div>
 
